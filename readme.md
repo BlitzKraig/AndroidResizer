@@ -1,4 +1,5 @@
 Android Resizer – ReadMe
+===
 
 What is AndroidResizer?
 AndroidResizer is a simple Java desktop app for automatically re-sizing android assets.
