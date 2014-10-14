@@ -93,6 +93,7 @@ ldpi       | mdpi     | tvdpi     | hdpi      | xhdpi      | xxhdpi      | xxxhd
 And these should display at roughly the same size on any device, provided you've placed these in density-specific folders (e.g. drawable-xhdpi, drawable-hdpi, etc.)	
 
 For reference, the pixel densities for these are:
+
 ldpi   | mdpi  | tvdpi  | hdpi  | xhdpi  | xxhdpi  | xxxhdpi
 
 120   | 160     | 213    | 240   | 320     | 480       | 640
