@@ -43,9 +43,13 @@ _NOTE: You may want to back up your assets before running this tool. In the unli
 
 ######PLANNED FEATURES
 -iOS support
+
 -Single file support
+
 -Scale from other densities
+
 -Basic upscaling
+
 -Update design
 
 
