@@ -2,36 +2,38 @@ Android Resizer – ReadMe
 ===
 
 What is AndroidResizer?
+---
 AndroidResizer is a simple Java desktop app for automatically re-sizing android assets.
 AR will downscale your assets and copy them into an android-style folder structure.
 
 Why is AndroidResizer?
+---
 AR was a personal project to help speed up some of the tedious tasks when dealing with Android assets. With AR, you can scale down from XXHDPI, which can be useful in a few ways. When creating new assets the benefits are obvious, simply create your XXHDPI assets and scale them down straight into your project.
 It can also be useful when adding new assets into a project. Instead of getting the new assets for each density and dragging them into each DPI folder, simply drag your XXHDPI asset into it’s folder then run AndroidResizer again to re-scale the folder down.
 
-NOTE: You may want to back up your assets before running this tool. In the unlikely event that all of your assets get rekt, I will not be held responsible.
+_NOTE: You may want to back up your assets before running this tool. In the unlikely event that all of your assets get rekt, I will not be held responsible._
 
-Changelog:-
+####Changelog:-
 
-1.0
+#####1.0
 -Initial Release
 -Scale all PNG images in an XXHDPI folder and save them to all lower DPI's (L, M, TV, H, XH)
 
-1.0.1
+#####1.0.1
 -Added multi-threading to provide user feedback while processing images
 -Added ability to choose which DPI outputs to generate
 -Fixed transparency issues
 
-1.1
+#####1.1
 -Added JPEG and GIF support (Animation not currently supported)
 -Improved scaling operations
 
-1.1.1
+#####1.1.1
 -Stability improvements
 -Output improvements
 -Fixed progress bar bug
 
-1.2
+#####1.2
 -Added custom prefix for use with non-standard Android Resource structures (Titanium, PhoneGap etc.)
 -Added some tooltips
 -Altered some text output to fit with the new prefixing feature
@@ -39,7 +41,7 @@ Changelog:-
 -Cleaned up variable names
 -Disable/enable all controls when sizing is in progress/complete
 
-PLANNED FEATURES
+######PLANNED FEATURES
 -iOS support
 -Single file support
 -Scale from other densities
@@ -47,7 +49,8 @@ PLANNED FEATURES
 -Update design
 
 
-==========REFERENCE===========
+REFERENCE
+---
 
 From http://stackoverflow.com/questions/11581649/about-android-image-size-and-assets-sizes
 
