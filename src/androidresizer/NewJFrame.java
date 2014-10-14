@@ -132,7 +132,7 @@ private String ext;
         OutputTxtArea.setEditable(false);
         OutputTxtArea.setColumns(20);
         OutputTxtArea.setRows(5);
-        OutputTxtArea.setText("Welcome to Android Resizer v1.2\n\nCreated by Craig Currie\nGraphics by Jan Putzan");
+        OutputTxtArea.setText("Welcome to Android Resizer v1.2\n\nCreated by Craig Currie");
         jScrollPane1.setViewportView(OutputTxtArea);
 
         GenerateProgressBar.setToolTipText("");
@@ -272,9 +272,9 @@ private String ext;
 
     private void BrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BrowseButtonActionPerformed
 //    new FolderChooser().setVisible(true);  
+        
 JFileChooser chooser = new JFileChooser();
 chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-
 chooser.showOpenDialog(null);
 //chooser.
 originalDirectory = chooser.getSelectedFile();

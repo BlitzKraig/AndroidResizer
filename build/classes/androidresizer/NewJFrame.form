@@ -256,7 +256,7 @@
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="Welcome to Android Resizer v1.2&#xa;&#xa;Created by Craig Currie&#xa;Graphics by Jan Putzan"/>
+                <Property name="text" type="java.lang.String" value="Welcome to Android Resizer v1.2&#xa;&#xa;Created by Craig Currie"/>
               </Properties>
             </Component>
           </SubComponents>
