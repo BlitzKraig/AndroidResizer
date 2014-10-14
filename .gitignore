@@ -4,9 +4,11 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.ear
+
+lib/appbundler-1.0.jar
+lib/jarbundler-2.3.1.jar
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
