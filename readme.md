@@ -23,6 +23,7 @@ _NOTE: You may want to back up your assets before running this tool. In the unli
 -Scale all PNG images in an XXHDPI folder and save them to all lower DPI's (L, M, TV, H, XH)
 
 
+
 #####1.0.1
 -Added multi-threading to provide user feedback while processing images
 
@@ -31,10 +32,12 @@ _NOTE: You may want to back up your assets before running this tool. In the unli
 -Fixed transparency issues
 
 
+
 #####1.1
 -Added JPEG and GIF support (Animation not currently supported)
 
 -Improved scaling operations
+
 
 
 #####1.1.1
@@ -43,6 +46,7 @@ _NOTE: You may want to back up your assets before running this tool. In the unli
 -Output improvements
 
 -Fixed progress bar bug
+
 
 
 #####1.2
@@ -59,6 +63,7 @@ _NOTE: You may want to back up your assets before running this tool. In the unli
 -Disable/enable all controls when sizing is in progress/complete
 
 
+
 ######PLANNED FEATURES
 -iOS support
 
@@ -69,6 +74,7 @@ _NOTE: You may want to back up your assets before running this tool. In the unli
 -Basic upscaling
 
 -Update design
+
 
 
 REFERENCE
