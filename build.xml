@@ -11,9 +11,9 @@
     <description>Builds, tests, and runs the project AndroidResizer.</description>
     <import file="nbproject/build-impl.xml"/>
     
-    <taskdef name="bundleapp"
+<!--    <taskdef name="bundleapp"
              classname="com.oracle.appbundler.AppBundlerTask"   
-             classpath="lib/appbundler-1.0.jar" />
+             classpath="lib/appbundler-1.0.jar" />-->
 <!--    <taskdef name="jarbundler" 
          classname="net.sourceforge.jarbundler.JarBundler" />-->
 
