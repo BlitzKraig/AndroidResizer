@@ -91,7 +91,6 @@ private String ext;
 
         ChooseLabel.setText("Choose XXHDPI folder");
 
-        FileField.setEditable(false);
         FileField.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         BrowseButton.setText("Browse...");
