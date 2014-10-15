@@ -24,7 +24,7 @@ import static javax.swing.text.DefaultCaret.ALWAYS_UPDATE;
  *
  * @author planys
  */
-public class NewJFrame extends javax.swing.JFrame {
+public class AResizerFrame extends javax.swing.JFrame {
 private File originalDirectory;
 private File ldpiDirectory;
 private File mdpiDirectory;
@@ -38,7 +38,7 @@ private String ext;
         /**
      * Creates new form NewJFrame
      */
-    public NewJFrame() {
+    public AResizerFrame() {
         initComponents();
     }
 
@@ -327,7 +327,7 @@ if(originalDirectory != null){
             try {
                 processImages();
             } catch (IOException ex) {
-                Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AResizerFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         }
@@ -795,20 +795,21 @@ File outputfile = new File(xhdpiDirectory + "/" + fileName);
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AResizerFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AResizerFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AResizerFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AResizerFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewJFrame().setVisible(true);
+                new AResizerFrame().setVisible(true);
             }
         });
     }
