@@ -21,3 +21,6 @@ dist/
 nbdist/
 nbactions.xml
 nb-configuration.xml
+
+# OSX
+.DS_STORE
