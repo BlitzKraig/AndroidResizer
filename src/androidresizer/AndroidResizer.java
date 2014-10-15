@@ -6,6 +6,8 @@
 
 package androidresizer;
 
+import javax.swing.UIManager;
+
 /**
  *
  * @author planys
@@ -18,6 +20,11 @@ public class AndroidResizer {
     public static void main(String[] args) {
         // TODO code application logic here
 //        System.out.println("TEST");
+        try { 
+    UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel"); 
+} catch (Exception ex) { 
+    ex.printStackTrace(); 
+}
         new AResizerFrame().setVisible(true);
     }
     
