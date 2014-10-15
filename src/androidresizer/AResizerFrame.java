@@ -93,6 +93,11 @@ private String ext;
         ChooseLabel.setText("Choose XXHDPI folder");
 
         FileField.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        FileField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FileFieldActionPerformed(evt);
+            }
+        });
 
         BrowseButton.setText("Browse...");
         BrowseButton.addActionListener(new java.awt.event.ActionListener() {
@@ -292,6 +297,7 @@ if(originalDirectory != null){
     PrefixCheckbox.setEnabled(false);
     CopyXXHDPIChk.setEnabled(false);
     PrefixText.setEnabled(false);
+    FileField.setEnabled(false);
     
     OutputTxtArea.setText("");
     OutputTxtArea.append("Processing Images...\n");
@@ -369,6 +375,10 @@ one.start();
     private void CopyXXHDPIChkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CopyXXHDPIChkActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CopyXXHDPIChkActionPerformed
+
+    private void FileFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FileFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FileFieldActionPerformed
    
     
     
@@ -766,6 +776,7 @@ File outputfile = new File(xhdpiDirectory + "/" + fileName);
 //    chkTVDPI.setEnabled(true);
     BrowseButton.setEnabled(true);
     PrefixCheckbox.setEnabled(true);
+    FileField.setEnabled(true);
     
     if(PrefixCheckbox.isSelected()){
         PrefixText.setEnabled(true);
