@@ -59,6 +59,15 @@ _NOTE: You may want to back up your assets before running this tool. In the unli
 - Disable/enable all controls when sizing is in progress/complete
 
 
+#####1.2.1
+- Added EXE generation
+- Added new icons & images
+- Updated DMG generation
+- Changed to Nimbus L&F
+- Made directory field manually editable
+- Disable/enable directory field when sizing is in progress/complete
+- Removed some unused files/code
+
 
 ######PLANNED FEATURES
 - iOS support
