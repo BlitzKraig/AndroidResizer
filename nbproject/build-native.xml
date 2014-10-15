@@ -806,6 +806,8 @@ Portions Copyrighted 2013 Sun Microsystems, Inc.
                 deploy.setHeight(height);
                 deploy.setOutdir(outdir);
                 deploy.setOutfile(outfile);
+                deploy.setVerbose(true);
+                
 
                 // native packaging (time consuming, thus applied in explicit build only)
                 var nativeEnabled = new String(project.getProperty("do.build.native.package"));

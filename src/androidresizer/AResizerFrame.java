@@ -8,10 +8,12 @@ package androidresizer;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,6 +42,14 @@ private String ext;
      */
     public AResizerFrame() {
         initComponents();
+        try{
+            java.net.URL url = ClassLoader.getSystemResource("androidresizer/ARIconSmall.png");
+Toolkit kit = Toolkit.getDefaultToolkit();
+Image img = kit.createImage(url);
+this.setIconImage(img);
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
     }
 
     /**

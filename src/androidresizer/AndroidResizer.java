@@ -6,6 +6,8 @@
 
 package androidresizer;
 
+import java.awt.Image;
+import javax.imageio.ImageIO;
 import javax.swing.UIManager;
 
 /**

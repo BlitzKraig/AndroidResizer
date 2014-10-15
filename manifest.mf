@@ -1,4 +1,4 @@
 Manifest-Version: 1.2
 SplashScreen-Image: androidresizer/Page 6.gif
 X-COMMENT: Main-Class will be added automatically by build
-
+Class-Path: package/windows/
