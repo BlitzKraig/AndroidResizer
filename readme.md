@@ -3,6 +3,7 @@ Android Resizer – ReadMe
 ![alt tag](https://raw.githubusercontent.com/BlitzKraig/AndroidResizer/master/src/androidresizer/ResizerIconBlue.gif)
 
 Created by [Craig Currie](https://github.com/BlitzKraig)
+
 Artwork by [Jan Putzan](https://github.com/janputzan)
 
 What is AndroidResizer?
