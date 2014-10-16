@@ -50,6 +50,7 @@ this.setIconImage(img);
         }catch (Exception ex){
             ex.printStackTrace();
         }
+        OutputTxtArea.append("\n");
     }
 
     /**
@@ -355,7 +356,7 @@ one.start();
 //        Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
 //    }
 }else{
-     OutputTxtArea.append("Directory is null or doesn't exist!\n");
+     OutputTxtArea.append("Directory doesn't exist!\n");
 }
     }//GEN-LAST:event_GenerateButtonActionPerformed
 
