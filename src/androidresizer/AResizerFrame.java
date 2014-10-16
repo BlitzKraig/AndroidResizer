@@ -421,10 +421,10 @@ caret.setUpdatePolicy(ALWAYS_UPDATE);
                 ext = fileName.substring(fileName.length()-3);
                 System.out.println(ext);
                 BufferedImage img = ImageIO.read(fileList[i]);
-                float scaleX = (float) (img.getWidth() / 4);
+                float scaleX = (float) (img.getWidth());
 //                scaleX = (float) (scaleX / 4);
 //                scaleX = (float) (scaleX * 3);
-float scaleY = (float) (img.getHeight() / 4);
+float scaleY = (float) (img.getHeight());
 // scaleY = (float) (scaleY / 4);
 //                scaleY = (float) (scaleY * 3);
                 
