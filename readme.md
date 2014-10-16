@@ -68,6 +68,10 @@ _NOTE: You may want to back up your assets before running this tool. In the unli
 - Disable/enable directory field when sizing is in progress/complete
 - Removed some unused files/code
 
+#####1.2.2
+- Fixed XXHDPI copying scaling down to ldpi
+- Fixed some output
+- Fixed scaling issue for images with no alpha channel 
 
 ######PLANNED FEATURES
 - iOS support

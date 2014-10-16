@@ -93,7 +93,7 @@ this.setIconImage(img);
         menuBar1.add(menu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Android Resizer - 1.2.1");
+        setTitle("Android Resizer - 1.2.2");
         setForeground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
         setResizable(false);
 
@@ -148,7 +148,7 @@ this.setIconImage(img);
         OutputTxtArea.setEditable(false);
         OutputTxtArea.setColumns(20);
         OutputTxtArea.setRows(5);
-        OutputTxtArea.setText("Android Resizer\nv1.2.1\nCreated by Craig Currie\nArtwork by Jan Putzan");
+        OutputTxtArea.setText("Android Resizer\nv1.2.2\nCreated by Craig Currie\nArtwork by Jan Putzan");
         jScrollPane1.setViewportView(OutputTxtArea);
 
         GenerateProgressBar.setToolTipText("");
