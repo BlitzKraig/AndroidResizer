@@ -439,18 +439,28 @@ if(finalScaleY == 0){
     finalScaleY = 1;
 }
 
+
+
+
+
 Image newImg = img.getScaledInstance(finalScaleX, finalScaleY, Image.SCALE_SMOOTH);
 
-// construct the buffered image
-BufferedImage bImage      = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+BufferedImage bImage;
+if(img.getColorModel().toString().contains("has alpha = false")){
+    bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_RGB);
 
-//obtain its graphics
+}else{
+    bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+
+}
+
+
 Graphics2D bImageGraphics = bImage.createGraphics();
 
-//draw the Image (image) into the BufferedImage (bImage)
+
 bImageGraphics.drawImage(newImg, null, null);
 
-// cast it to rendered image
+
 RenderedImage rImage = (RenderedImage)bImage;
 
 
@@ -511,8 +521,15 @@ if(finalScaleY == 0){
 
 Image newImg = img.getScaledInstance(finalScaleX, finalScaleY, Image.SCALE_SMOOTH);
 
+BufferedImage bImage;
+if(img.getColorModel().toString().contains("has alpha = false")){
+    bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_RGB);
 
-BufferedImage bImage      = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+}else{
+    bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+
+}
+
 
 
 Graphics2D bImageGraphics = bImage.createGraphics();
@@ -571,7 +588,7 @@ System.out.println("Image: " + fileName + "| Height: " + finalScaleY + "| Width:
 Image newImg = img.getScaledInstance(finalScaleX, finalScaleY, Image.SCALE_SMOOTH);
 
 
-BufferedImage bImage      = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+BufferedImage bImage;if(img.getColorModel().toString().contains("has alpha = false")){    bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_RGB);}else{    bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_ARGB);}
 
 
 Graphics2D bImageGraphics = bImage.createGraphics();
@@ -631,7 +648,7 @@ System.out.println("Image: " + fileName + "| Height: " + finalScaleY + "| Width:
 Image newImg = img.getScaledInstance(finalScaleX, finalScaleY, Image.SCALE_SMOOTH);
 
 
-BufferedImage bImage      = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+BufferedImage bImage;if(img.getColorModel().toString().contains("has alpha = false")){    bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_RGB);}else{    bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_ARGB);}
 
 
 Graphics2D bImageGraphics = bImage.createGraphics();
@@ -690,7 +707,7 @@ System.out.println("Image: " + fileName + "| Height: " + finalScaleY + "| Width:
 Image newImg = img.getScaledInstance(finalScaleX, finalScaleY, Image.SCALE_SMOOTH);
 
 
-BufferedImage bImage      = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+BufferedImage bImage;if(img.getColorModel().toString().contains("has alpha = false")){    bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_RGB);}else{    bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_ARGB);}
 
 
 Graphics2D bImageGraphics = bImage.createGraphics();
@@ -749,7 +766,7 @@ System.out.println("Image: " + fileName + "| Height: " + finalScaleY + "| Width:
 Image newImg = img.getScaledInstance(finalScaleX, finalScaleY, Image.SCALE_SMOOTH);
 
 
-BufferedImage bImage      = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+BufferedImage bImage;if(img.getColorModel().toString().contains("has alpha = false")){    bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_RGB);}else{    bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_ARGB);}
 
 
 Graphics2D bImageGraphics = bImage.createGraphics();
