@@ -136,8 +136,7 @@ this.setIconImage(img);
         chkMDPI.setText("MDPI");
 
         chkTVDPI.setText("TVDPI");
-        chkTVDPI.setToolTipText("Disabled as the TVDPI scaling is buggy");
-        chkTVDPI.setEnabled(false);
+        chkTVDPI.setToolTipText("");
 
         chkHDPI.setSelected(true);
         chkHDPI.setText("HDPI");
@@ -635,10 +634,10 @@ File outputfile = new File(mdpiDirectory + "/" + fileName);
                 ext = fileName.substring(fileName.length()-3);
                 System.out.println(ext);
                 BufferedImage img = ImageIO.read(fileList[i]);
-                float scaleX = (float) (img.getWidth() / 2.3);
+                float scaleX = (float) (img.getWidth() / 2.256);
 //                scaleX = (float) (scaleX / 4);
 //                scaleX = (float) (scaleX * 3);
-float scaleY = (float) (img.getHeight() / 2.3);
+float scaleY = (float) (img.getHeight() / 2.256);
 // scaleY = (float) (scaleY / 4);
 //                scaleY = (float) (scaleY * 3);
                 
@@ -801,7 +800,7 @@ File outputfile = new File(xhdpiDirectory + "/" + fileName);
     chkXHDPI.setEnabled(true);
     chkLDPI.setEnabled(true);
     chkMDPI.setEnabled(true);
-//    chkTVDPI.setEnabled(true);
+    chkTVDPI.setEnabled(true);
     BrowseButton.setEnabled(true);
     PrefixCheckbox.setEnabled(true);
     FileField.setEnabled(true);

@@ -225,8 +225,7 @@
         <Component class="javax.swing.JCheckBox" name="chkTVDPI">
           <Properties>
             <Property name="text" type="java.lang.String" value="TVDPI"/>
-            <Property name="toolTipText" type="java.lang.String" value="Disabled as the TVDPI scaling is buggy"/>
-            <Property name="enabled" type="boolean" value="false"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
         <Component class="javax.swing.JCheckBox" name="chkHDPI">
