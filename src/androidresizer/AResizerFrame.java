@@ -11,8 +11,14 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.logging.Level;
@@ -52,6 +58,18 @@ this.setIconImage(img);
             ex.printStackTrace();
         }
         OutputTxtArea.append("\n");
+        
+        try {
+        BufferedReader reader = new BufferedReader ( new FileReader(".\\InputDirectory.txt"));
+        
+        FileField.setText(reader.readLine());
+      
+        reader.close();
+        
+    } catch (IOException ex) {
+        Logger.getLogger(AResizerFrame.class.getName()).log(Level.SEVERE, null, ex);
+    }
+        
     }
 
     /**
@@ -300,6 +318,18 @@ FileField.setText(directoryName);
 
     private void GenerateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerateButtonActionPerformed
 if(originalDirectory != null){
+    
+    try {
+        BufferedWriter writer = new BufferedWriter ( new FileWriter(".\\InputDirectory.txt"));
+        
+        writer.write(originalDirectory.toString());
+        
+        writer.close();
+        
+    } catch (IOException ex) {
+        Logger.getLogger(AResizerFrame.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
     GenerateButton.setEnabled(false);
     chkHDPI.setEnabled(false);
     chkXHDPI.setEnabled(false);
@@ -398,6 +428,7 @@ one.start();
     
     
     public void processImages() throws IOException{
+        
         
         
         DefaultCaret caret = (DefaultCaret) OutputTxtArea.getCaret();
@@ -850,6 +881,9 @@ File outputfile = new File(xhdpiDirectory + "/" + fileName);
                 new AResizerFrame().setVisible(true);
             }
         });
+        
+        
+        
     }
     
     public void test(){
