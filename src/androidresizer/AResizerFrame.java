@@ -37,6 +37,7 @@ private File xxhdpiDirectory;
 private File[] fileList;
 private File[] imageList;
 private String ext;
+private String version = "1.2.2";
         /**
      * Creates new form NewJFrame
      */
@@ -93,7 +94,7 @@ this.setIconImage(img);
         menuBar1.add(menu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Android Resizer - 1.2.2");
+        setTitle("Android Resizer - v" + version);
         setForeground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
         setResizable(false);
 
@@ -147,7 +148,7 @@ this.setIconImage(img);
         OutputTxtArea.setEditable(false);
         OutputTxtArea.setColumns(20);
         OutputTxtArea.setRows(5);
-        OutputTxtArea.setText("Android Resizer\nv1.2.2\nCreated by Craig Currie\nArtwork by Jan Putzan");
+        OutputTxtArea.setText("Android Resizer\nv" + version + "\nCreated by Craig Currie\nArtwork by Jan Putzan");
         jScrollPane1.setViewportView(OutputTxtArea);
 
         GenerateProgressBar.setToolTipText("");
@@ -277,6 +278,8 @@ this.setIconImage(img);
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
+        getAccessibleContext().setAccessibleName(getTitle());
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
