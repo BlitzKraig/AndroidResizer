@@ -70,6 +70,11 @@ this.setIconImage(img);
         Logger.getLogger(AResizerFrame.class.getName()).log(Level.SEVERE, null, ex);
     }
         
+        if(FileField.getText() != null){
+            File tempDirectory = new File(FileField.getText());
+            originalDirectory = tempDirectory;
+        }
+        
     }
 
     /**
