@@ -109,6 +109,8 @@ this.setIconImage(img);
         PrefixText = new javax.swing.JTextField();
         PrefixCheckbox = new javax.swing.JCheckBox();
         CopyXXHDPIChk = new javax.swing.JCheckBox();
+        DensityLabelClickable = new javax.swing.JLabel();
+        FolderLabel = new javax.swing.JLabel();
 
         menu1.setLabel("File");
         menuBar1.add(menu1);
@@ -125,7 +127,7 @@ this.setIconImage(img);
         TitleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TitleLabel.setText("Android Resizer");
 
-        ChooseLabel.setText("Choose XXHDPI folder");
+        ChooseLabel.setText("Choose");
 
         FileField.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         FileField.addActionListener(new java.awt.event.ActionListener() {
@@ -205,6 +207,16 @@ this.setIconImage(img);
             }
         });
 
+        DensityLabelClickable.setForeground(new java.awt.Color(51, 102, 255));
+        DensityLabelClickable.setText("XXHDPI");
+        DensityLabelClickable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DensityLabelClickableMouseClicked(evt);
+            }
+        });
+
+        FolderLabel.setText("Folder");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -214,7 +226,9 @@ this.setIconImage(img);
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(GenerateProgressBar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(FileField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 6, Short.MAX_VALUE)
+                        .addComponent(FileField, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -226,9 +240,6 @@ this.setIconImage(img);
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(36, 36, 36)
                                         .addComponent(BrowseButton))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(ChooseLabel))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(60, 60, 60)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,7 +255,15 @@ this.setIconImage(img);
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(29, 29, 29)
                                         .addComponent(GenerateButton)))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(ChooseLabel)
+                        .addGap(3, 3, 3)
+                        .addComponent(DensityLabelClickable)
+                        .addGap(2, 2, 2)
+                        .addComponent(FolderLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
             .addComponent(TitleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -254,7 +273,10 @@ this.setIconImage(img);
                 .addContainerGap()
                 .addComponent(TitleLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ChooseLabel)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ChooseLabel)
+                    .addComponent(DensityLabelClickable)
+                    .addComponent(FolderLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(FileField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -307,99 +329,17 @@ this.setIconImage(img);
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BrowseButtonActionPerformed
-//    new FolderChooser().setVisible(true);  
-        
-JFileChooser chooser = new JFileChooser();
-chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-chooser.showOpenDialog(null);
-//chooser.
-originalDirectory = chooser.getSelectedFile();
-String directoryName = originalDirectory.getAbsolutePath();
-
-FileField.setText(directoryName);
-// TODO add your handling code here:
-    }//GEN-LAST:event_BrowseButtonActionPerformed
-
-    private void GenerateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerateButtonActionPerformed
-if(originalDirectory != null){
-    
-    try {
-        BufferedWriter writer = new BufferedWriter ( new FileWriter(".\\InputDirectory.txt"));
-        
-        writer.write(originalDirectory.toString());
-        
-        writer.close();
-        
-    } catch (IOException ex) {
-        Logger.getLogger(AResizerFrame.class.getName()).log(Level.SEVERE, null, ex);
-    }
-    
-    GenerateButton.setEnabled(false);
-    chkHDPI.setEnabled(false);
-    chkXHDPI.setEnabled(false);
-    chkLDPI.setEnabled(false);
-    chkMDPI.setEnabled(false);
-    chkTVDPI.setEnabled(false);
-    BrowseButton.setEnabled(false);
-    PrefixCheckbox.setEnabled(false);
-    CopyXXHDPIChk.setEnabled(false);
-    PrefixText.setEnabled(false);
-    FileField.setEnabled(false);
-    
-    OutputTxtArea.setText("");
-    OutputTxtArea.append("Processing Images...\n");
-  fileList = originalDirectory.listFiles();
-  
-    int i;
-        
-//  for(i=0; i<fileList.length; i++){
-//      System.out.println(fileList[i].getName());
-////      if(fileList[i].isFile()){
-////          if(!fileList[i].isHidden()){
-////              try{
-////                  
-////              imageList[imageList.length] = new File(fileList[i].getAbsolutePath());
-////              }catch(NullPointerException e){
-////              imageList[0] = new File(fileList[i].getAbsolutePath());
-////              }
-////          }
-////      }
-//  }
-//  for(i=0; i<imageList.length; i++){
-//      System.out.println(imageList[i].getName());
-//  }
-//    try {
-    Thread one = new Thread() {
-        @Override
-        public void run() {
-            
-            try {
-                processImages();
-            } catch (IOException ex) {
-                Logger.getLogger(AResizerFrame.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-        }
-    };
-
-one.start();
+    private void DensityLabelClickableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DensityLabelClickableMouseClicked
+DensityChooser dc = new DensityChooser(this, rootPaneCheckingEnabled);
+dc.setBounds((int)this.getBounds().getX(), (int)this.getBounds().getY(), dc.getWidth(), dc.getHeight());
+//dc.setVisible(true);
 
 
+    }//GEN-LAST:event_DensityLabelClickableMouseClicked
 
-//        fileList[0];
-//  originalDirectory.listFiles();
-//    } catch (IOException ex) {
-//        Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
-//    }
-}else{
-     OutputTxtArea.append("Directory doesn't exist!\n");
-}
-    }//GEN-LAST:event_GenerateButtonActionPerformed
-
-    private void PrefixTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrefixTextActionPerformed
+    private void CopyXXHDPIChkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CopyXXHDPIChkActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_PrefixTextActionPerformed
+    }//GEN-LAST:event_CopyXXHDPIChkActionPerformed
 
     private void PrefixCheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrefixCheckboxActionPerformed
         // TODO add your handling code here:
@@ -411,18 +351,105 @@ one.start();
             PrefixText.setText("drawable-");
             CopyXXHDPIChk.setSelected(false);
             CopyXXHDPIChk.setEnabled(false);
-            
+
         }
-        
     }//GEN-LAST:event_PrefixCheckboxActionPerformed
+
+    private void PrefixTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrefixTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PrefixTextActionPerformed
 
     private void chkLDPIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkLDPIActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chkLDPIActionPerformed
 
-    private void CopyXXHDPIChkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CopyXXHDPIChkActionPerformed
+    private void GenerateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerateButtonActionPerformed
+        if(originalDirectory != null){
+
+            try {
+                BufferedWriter writer = new BufferedWriter ( new FileWriter(".\\InputDirectory.txt"));
+
+                writer.write(originalDirectory.toString());
+
+                writer.close();
+
+            } catch (IOException ex) {
+                Logger.getLogger(AResizerFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            GenerateButton.setEnabled(false);
+            chkHDPI.setEnabled(false);
+            chkXHDPI.setEnabled(false);
+            chkLDPI.setEnabled(false);
+            chkMDPI.setEnabled(false);
+            chkTVDPI.setEnabled(false);
+            BrowseButton.setEnabled(false);
+            PrefixCheckbox.setEnabled(false);
+            CopyXXHDPIChk.setEnabled(false);
+            PrefixText.setEnabled(false);
+            FileField.setEnabled(false);
+
+            OutputTxtArea.setText("");
+            OutputTxtArea.append("Processing Images...\n");
+            fileList = originalDirectory.listFiles();
+
+            int i;
+
+            //  for(i=0; i<fileList.length; i++){
+                //      System.out.println(fileList[i].getName());
+                ////      if(fileList[i].isFile()){
+                    ////          if(!fileList[i].isHidden()){
+                        ////              try{
+                            ////
+                            ////              imageList[imageList.length] = new File(fileList[i].getAbsolutePath());
+                            ////              }catch(NullPointerException e){
+                            ////              imageList[0] = new File(fileList[i].getAbsolutePath());
+                            ////              }
+                        ////          }
+                    ////      }
+                //  }
+            //  for(i=0; i<imageList.length; i++){
+                //      System.out.println(imageList[i].getName());
+                //  }
+            //    try {
+                Thread one = new Thread() {
+                    @Override
+                    public void run() {
+
+                        try {
+                            processImages();
+                        } catch (IOException ex) {
+                            Logger.getLogger(AResizerFrame.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+
+                    }
+                };
+
+                one.start();
+
+                //        fileList[0];
+                //  originalDirectory.listFiles();
+                //    } catch (IOException ex) {
+                //        Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+                //    }
+        }else{
+            OutputTxtArea.append("Directory doesn't exist!\n");
+        }
+    }//GEN-LAST:event_GenerateButtonActionPerformed
+
+    private void BrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BrowseButtonActionPerformed
+        //    new FolderChooser().setVisible(true);
+
+        JFileChooser chooser = new JFileChooser();
+        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        chooser.showOpenDialog(null);
+        //chooser.
+        originalDirectory = chooser.getSelectedFile();
+        String directoryName = originalDirectory.getAbsolutePath();
+
+        FileField.setText(directoryName);
         // TODO add your handling code here:
-    }//GEN-LAST:event_CopyXXHDPIChkActionPerformed
+    }//GEN-LAST:event_BrowseButtonActionPerformed
 
     private void FileFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FileFieldActionPerformed
         // TODO add your handling code here:
@@ -898,12 +925,14 @@ File outputfile = new File(xhdpiDirectory + "/" + fileName);
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BrowseButton;
     private javax.swing.JLabel ChooseLabel;
-    public javax.swing.JCheckBox CopyXXHDPIChk;
+    private javax.swing.JCheckBox CopyXXHDPIChk;
+    private javax.swing.JLabel DensityLabelClickable;
     private javax.swing.JTextField FileField;
+    private javax.swing.JLabel FolderLabel;
     private javax.swing.JButton GenerateButton;
     private javax.swing.JProgressBar GenerateProgressBar;
     private javax.swing.JTextArea OutputTxtArea;
-    public javax.swing.JCheckBox PrefixCheckbox;
+    private javax.swing.JCheckBox PrefixCheckbox;
     private javax.swing.JTextField PrefixText;
     private javax.swing.JLabel TitleLabel;
     private javax.swing.JCheckBox chkHDPI;
