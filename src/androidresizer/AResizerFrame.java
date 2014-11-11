@@ -43,7 +43,7 @@ private File xxhdpiDirectory;
 private File[] fileList;
 private File[] imageList;
 private String ext;
-private String version = "1.2.2";
+private final String version = "1.2.2";
         /**
      * Creates new form NewJFrame
      */
@@ -109,8 +109,8 @@ this.setIconImage(img);
         PrefixText = new javax.swing.JTextField();
         PrefixCheckbox = new javax.swing.JCheckBox();
         CopyXXHDPIChk = new javax.swing.JCheckBox();
-        DensityLabelClickable = new javax.swing.JLabel();
         FolderLabel = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
 
         menu1.setLabel("File");
         menuBar1.add(menu1);
@@ -129,7 +129,7 @@ this.setIconImage(img);
 
         ChooseLabel.setText("Choose");
 
-        FileField.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        FileField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         FileField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FileFieldActionPerformed(evt);
@@ -207,15 +207,11 @@ this.setIconImage(img);
             }
         });
 
-        DensityLabelClickable.setForeground(new java.awt.Color(51, 102, 255));
-        DensityLabelClickable.setText("XXHDPI");
-        DensityLabelClickable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                DensityLabelClickableMouseClicked(evt);
-            }
-        });
-
         FolderLabel.setText("Folder");
+
+        jComboBox1.setBackground(new java.awt.Color(153, 153, 153));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "XXHDPI" }));
+        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -223,23 +219,14 @@ this.setIconImage(img);
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(GenerateProgressBar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 6, Short.MAX_VALUE)
                         .addComponent(FileField, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(54, 54, 54)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(CopyXXHDPIChk)
-                                    .addComponent(PrefixCheckbox)
-                                    .addComponent(PrefixText, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(36, 36, 36)
-                                        .addComponent(BrowseButton))))
+                                .addGap(88, 88, 88)
+                                .addComponent(BrowseButton))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(60, 60, 60)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,19 +240,28 @@ this.setIconImage(img);
                                             .addComponent(chkHDPI)))
                                     .addComponent(chkXHDPI)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(29, 29, 29)
-                                        .addComponent(GenerateButton)))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(ChooseLabel)
-                        .addGap(3, 3, 3)
-                        .addComponent(DensityLabelClickable)
-                        .addGap(2, 2, 2)
-                        .addComponent(FolderLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addGap(28, 28, 28)
+                                        .addComponent(GenerateButton))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(ChooseLabel)
+                                .addGap(0, 0, 0)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(FolderLabel)))
+                        .addGap(0, 58, Short.MAX_VALUE)))
                 .addContainerGap())
             .addComponent(TitleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
+            .addComponent(GenerateProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jSeparator2)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CopyXXHDPIChk)
+                    .addComponent(PrefixCheckbox)
+                    .addComponent(PrefixText, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,19 +271,19 @@ this.setIconImage(img);
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ChooseLabel)
-                    .addComponent(DensityLabelClickable)
-                    .addComponent(FolderLabel))
+                    .addComponent(FolderLabel)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(FileField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BrowseButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PrefixCheckbox)
                 .addGap(4, 4, 4)
+                .addComponent(PrefixCheckbox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(CopyXXHDPIChk)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PrefixText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -329,14 +325,6 @@ this.setIconImage(img);
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void DensityLabelClickableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DensityLabelClickableMouseClicked
-DensityChooser dc = new DensityChooser(this, rootPaneCheckingEnabled);
-dc.setBounds((int)this.getBounds().getX(), (int)this.getBounds().getY(), dc.getWidth(), dc.getHeight());
-//dc.setVisible(true);
-
-
-    }//GEN-LAST:event_DensityLabelClickableMouseClicked
-
     private void CopyXXHDPIChkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CopyXXHDPIChkActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CopyXXHDPIChkActionPerformed
@@ -364,7 +352,7 @@ dc.setBounds((int)this.getBounds().getX(), (int)this.getBounds().getY(), dc.getW
     }//GEN-LAST:event_chkLDPIActionPerformed
 
     private void GenerateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerateButtonActionPerformed
-        if(originalDirectory != null){
+        if(originalDirectory != null && !"".equals(originalDirectory.toString())){
 
             try {
                 BufferedWriter writer = new BufferedWriter ( new FileWriter(".\\InputDirectory.txt"));
@@ -925,14 +913,13 @@ File outputfile = new File(xhdpiDirectory + "/" + fileName);
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BrowseButton;
     private javax.swing.JLabel ChooseLabel;
-    private javax.swing.JCheckBox CopyXXHDPIChk;
-    private javax.swing.JLabel DensityLabelClickable;
+    public javax.swing.JCheckBox CopyXXHDPIChk;
     private javax.swing.JTextField FileField;
     private javax.swing.JLabel FolderLabel;
     private javax.swing.JButton GenerateButton;
     private javax.swing.JProgressBar GenerateProgressBar;
     private javax.swing.JTextArea OutputTxtArea;
-    private javax.swing.JCheckBox PrefixCheckbox;
+    public javax.swing.JCheckBox PrefixCheckbox;
     private javax.swing.JTextField PrefixText;
     private javax.swing.JLabel TitleLabel;
     private javax.swing.JCheckBox chkHDPI;
@@ -940,6 +927,7 @@ File outputfile = new File(xhdpiDirectory + "/" + fileName);
     private javax.swing.JCheckBox chkMDPI;
     private javax.swing.JCheckBox chkTVDPI;
     private javax.swing.JCheckBox chkXHDPI;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
