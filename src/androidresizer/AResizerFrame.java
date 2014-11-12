@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package androidresizer;
 
 import java.awt.Graphics2D;
@@ -33,48 +32,50 @@ import static javax.swing.text.DefaultCaret.ALWAYS_UPDATE;
  * @author planys
  */
 public class AResizerFrame extends javax.swing.JFrame {
-private File originalDirectory;
-private File ldpiDirectory;
-private File mdpiDirectory;
-private File tvdpiDirectory;
-private File hdpiDirectory;
-private File xhdpiDirectory;
-private File xxhdpiDirectory;
-private File[] fileList;
-private File[] imageList;
-private String ext;
-private final String version = "1.2.2";
-        /**
+
+    private File originalDirectory;
+    private File ldpiDirectory;
+    private File mdpiDirectory;
+    private File tvdpiDirectory;
+    private File hdpiDirectory;
+    private File xhdpiDirectory;
+    private File xxhdpiDirectory;
+    private File[] fileList;
+    private File[] imageList;
+    private String ext;
+    private final String version = "1.2.2";
+
+    /**
      * Creates new form NewJFrame
      */
     public AResizerFrame() {
         initComponents();
-        try{
+        try {
             java.net.URL url = ClassLoader.getSystemResource("androidresizer/ARIconSmall.png");
-Toolkit kit = Toolkit.getDefaultToolkit();
-Image img = kit.createImage(url);
-this.setIconImage(img);
-        }catch (Exception ex){
+            Toolkit kit = Toolkit.getDefaultToolkit();
+            Image img = kit.createImage(url);
+            this.setIconImage(img);
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
         OutputTxtArea.append("\n");
-        
+
         try {
-        BufferedReader reader = new BufferedReader ( new FileReader(".\\InputDirectory.txt"));
-        
-        FileField.setText(reader.readLine());
-      
-        reader.close();
-        
-    } catch (IOException ex) {
-        Logger.getLogger(AResizerFrame.class.getName()).log(Level.SEVERE, null, ex);
-    }
-        
-        if(FileField.getText() != null){
+            BufferedReader reader = new BufferedReader(new FileReader(".\\InputDirectory.txt"));
+
+            FileField.setText(reader.readLine());
+
+            reader.close();
+
+        } catch (IOException ex) {
+            Logger.getLogger(AResizerFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        if (FileField.getText() != null) {
             File tempDirectory = new File(FileField.getText());
             originalDirectory = tempDirectory;
         }
-        
+
     }
 
     /**
@@ -110,7 +111,7 @@ this.setIconImage(img);
         PrefixCheckbox = new javax.swing.JCheckBox();
         CopyXXHDPIChk = new javax.swing.JCheckBox();
         FolderLabel = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        OriginDensity = new javax.swing.JComboBox();
 
         menu1.setLabel("File");
         menuBar1.add(menu1);
@@ -209,9 +210,14 @@ this.setIconImage(img);
 
         FolderLabel.setText("Folder");
 
-        jComboBox1.setBackground(new java.awt.Color(153, 153, 153));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "XXHDPI" }));
-        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        OriginDensity.setBackground(new java.awt.Color(153, 153, 153));
+        OriginDensity.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "XXHDPI", "XHDPI", "HDPI", "TVDPI", "MDPI" }));
+        OriginDensity.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        OriginDensity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OriginDensityActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -246,7 +252,7 @@ this.setIconImage(img);
                                 .addGap(8, 8, 8)
                                 .addComponent(ChooseLabel)
                                 .addGap(0, 0, 0)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(OriginDensity, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addComponent(FolderLabel)))
                         .addGap(0, 58, Short.MAX_VALUE)))
@@ -272,7 +278,7 @@ this.setIconImage(img);
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ChooseLabel)
                     .addComponent(FolderLabel)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(OriginDensity, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(FileField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -331,10 +337,10 @@ this.setIconImage(img);
 
     private void PrefixCheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrefixCheckboxActionPerformed
         // TODO add your handling code here:
-        if(PrefixCheckbox.isSelected()){
+        if (PrefixCheckbox.isSelected()) {
             PrefixText.setEnabled(true);
             CopyXXHDPIChk.setEnabled(true);
-        }else{
+        } else {
             PrefixText.setEnabled(false);
             PrefixText.setText("drawable-");
             CopyXXHDPIChk.setSelected(false);
@@ -352,10 +358,10 @@ this.setIconImage(img);
     }//GEN-LAST:event_chkLDPIActionPerformed
 
     private void GenerateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerateButtonActionPerformed
-        if(originalDirectory != null && !"".equals(originalDirectory.toString())){
+        if (originalDirectory != null && !"".equals(originalDirectory.toString())) {
 
             try {
-                BufferedWriter writer = new BufferedWriter ( new FileWriter(".\\InputDirectory.txt"));
+                BufferedWriter writer = new BufferedWriter(new FileWriter(".\\InputDirectory.txt"));
 
                 writer.write(originalDirectory.toString());
 
@@ -376,6 +382,7 @@ this.setIconImage(img);
             CopyXXHDPIChk.setEnabled(false);
             PrefixText.setEnabled(false);
             FileField.setEnabled(false);
+            OriginDensity.setEnabled(false);
 
             OutputTxtArea.setText("");
             OutputTxtArea.append("Processing Images...\n");
@@ -384,43 +391,43 @@ this.setIconImage(img);
             int i;
 
             //  for(i=0; i<fileList.length; i++){
-                //      System.out.println(fileList[i].getName());
-                ////      if(fileList[i].isFile()){
-                    ////          if(!fileList[i].isHidden()){
-                        ////              try{
-                            ////
-                            ////              imageList[imageList.length] = new File(fileList[i].getAbsolutePath());
-                            ////              }catch(NullPointerException e){
-                            ////              imageList[0] = new File(fileList[i].getAbsolutePath());
-                            ////              }
-                        ////          }
-                    ////      }
-                //  }
+            //      System.out.println(fileList[i].getName());
+            ////      if(fileList[i].isFile()){
+            ////          if(!fileList[i].isHidden()){
+            ////              try{
+            ////
+            ////              imageList[imageList.length] = new File(fileList[i].getAbsolutePath());
+            ////              }catch(NullPointerException e){
+            ////              imageList[0] = new File(fileList[i].getAbsolutePath());
+            ////              }
+            ////          }
+            ////      }
+            //  }
             //  for(i=0; i<imageList.length; i++){
-                //      System.out.println(imageList[i].getName());
-                //  }
+            //      System.out.println(imageList[i].getName());
+            //  }
             //    try {
-                Thread one = new Thread() {
-                    @Override
-                    public void run() {
+            Thread one = new Thread() {
+                @Override
+                public void run() {
 
-                        try {
-                            processImages();
-                        } catch (IOException ex) {
-                            Logger.getLogger(AResizerFrame.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-
+                    try {
+                        processImages();
+                    } catch (IOException ex) {
+                        Logger.getLogger(AResizerFrame.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                };
 
-                one.start();
+                }
+            };
 
-                //        fileList[0];
-                //  originalDirectory.listFiles();
-                //    } catch (IOException ex) {
-                //        Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
-                //    }
-        }else{
+            one.start();
+
+            //        fileList[0];
+            //  originalDirectory.listFiles();
+            //    } catch (IOException ex) {
+            //        Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            //    }
+        } else {
             OutputTxtArea.append("Directory doesn't exist!\n");
         }
     }//GEN-LAST:event_GenerateButtonActionPerformed
@@ -442,430 +449,492 @@ this.setIconImage(img);
     private void FileFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FileFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_FileFieldActionPerformed
-   
-    
-    
-    
-    
-    public void processImages() throws IOException{
-        
-        
-        
+
+    private void OriginDensityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OriginDensityActionPerformed
+    switch (OriginDensity.getSelectedIndex()) {
+            case 0:
+                chkXHDPI.setEnabled(true);
+                chkHDPI.setEnabled(true);
+                chkTVDPI.setEnabled(true);
+                chkMDPI.setEnabled(true);
+                chkLDPI.setEnabled(true);
+                break;
+            case 1:
+                chkXHDPI.setEnabled(false);
+                chkHDPI.setEnabled(true);
+                chkTVDPI.setEnabled(true);
+                chkMDPI.setEnabled(true);
+                chkLDPI.setEnabled(true);
+                break;
+            case 2:
+                chkXHDPI.setEnabled(false);
+                chkHDPI.setEnabled(false);
+                chkTVDPI.setEnabled(true);
+                chkMDPI.setEnabled(true);
+                chkLDPI.setEnabled(true);
+                break;
+            case 3:
+                chkXHDPI.setEnabled(false);
+                chkHDPI.setEnabled(false);
+                chkTVDPI.setEnabled(false);
+                chkMDPI.setEnabled(true);
+                chkLDPI.setEnabled(true);
+                break;
+            case 4:
+                chkXHDPI.setEnabled(false);
+                chkHDPI.setEnabled(false);
+                chkTVDPI.setEnabled(false);
+                chkMDPI.setEnabled(false);
+                chkLDPI.setEnabled(true);
+                break;
+
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_OriginDensityActionPerformed
+
+    public void processImages() throws IOException {
+
         DefaultCaret caret = (DefaultCaret) OutputTxtArea.getCaret();
-caret.setUpdatePolicy(ALWAYS_UPDATE);
+        caret.setUpdatePolicy(ALWAYS_UPDATE);
 
-        if(CopyXXHDPIChk.isSelected()){
-            
-        xxhdpiDirectory = new File(originalDirectory.getParent()+"/" + PrefixText.getText() + "xxhdpi");
-        if(!xxhdpiDirectory.exists()){
-            xxhdpiDirectory.mkdir();
-             OutputTxtArea.append("Creating " + PrefixText.getText() + "xxhdpi\n");
-        }else{
-            OutputTxtArea.append(PrefixText.getText() + "xxhdpi already exists, copying assets into this folder\n");
+        float XHDPIScale = 0;
+        float HDPIScale = 0;
+        float TVDPIScale = 0;
+        float MDPIScale = 0;
+        float LDPIScale = 0;
+
+        switch (OriginDensity.getSelectedIndex()) {
+            case 0:
+                XHDPIScale = (float) 1.5;
+                HDPIScale = (float) 2;
+                TVDPIScale = (float) 2.256;
+                MDPIScale = (float) 3;
+                LDPIScale = (float) 4;
+                break;
+            case 1:
+                XHDPIScale = (float) 1;
+                HDPIScale = (float) 1.333;
+                TVDPIScale = (float) 1.504;
+                MDPIScale = (float) 2;
+                LDPIScale = (float) 2.667;
+
+                break;
+            case 2:
+                HDPIScale = (float) 1;
+                TVDPIScale = (float) 1.128;
+                MDPIScale = (float) 1.5;
+                LDPIScale = (float) 2;
+                break;
+            case 3:
+                TVDPIScale = (float) 1;
+                MDPIScale = (float) 1.333;
+                LDPIScale = (float) 1.777;
+                break;
+            case 4:
+                MDPIScale = (float) 1;
+                LDPIScale = (float) 1.333;
+                break;
+
         }
-        int i;
-       GenerateProgressBar.setMaximum(fileList.length);
-        for(i=0; i<fileList.length; i++){
-            GenerateProgressBar.setValue(i);
-            System.out.println(fileList[i].getName());
-             OutputTxtArea.append("Processing XXHDPI - "+ i + " of " + fileList.length + "\n");
-            String fileName = fileList[i].getName();
-            if(fileName.contains(".png")||fileName.contains(".gif")||fileName.contains(".jpg")){
-                ext = fileName.substring(fileName.length()-3);
-                System.out.println(ext);
-                BufferedImage img = ImageIO.read(fileList[i]);
-                float scaleX = (float) (img.getWidth());
+
+        if (CopyXXHDPIChk.isSelected() && OriginDensity.getSelectedIndex() <= 0) {
+
+            xxhdpiDirectory = new File(originalDirectory.getParent() + "/" + PrefixText.getText() + "xxhdpi");
+            if (!xxhdpiDirectory.exists()) {
+                xxhdpiDirectory.mkdir();
+                OutputTxtArea.append("Creating " + PrefixText.getText() + "xxhdpi\n");
+            } else {
+                OutputTxtArea.append(PrefixText.getText() + "xxhdpi already exists, copying assets into this folder\n");
+            }
+            int i;
+            GenerateProgressBar.setMaximum(fileList.length);
+            for (i = 0; i < fileList.length; i++) {
+                GenerateProgressBar.setValue(i);
+                System.out.println(fileList[i].getName());
+                OutputTxtArea.append("Processing XXHDPI - " + i + " of " + fileList.length + "\n");
+                String fileName = fileList[i].getName();
+                if (fileName.contains(".png") || fileName.contains(".gif") || fileName.contains(".jpg")) {
+                    ext = fileName.substring(fileName.length() - 3);
+                    System.out.println(ext);
+                    BufferedImage img = ImageIO.read(fileList[i]);
+                    float scaleX = (float) (img.getWidth());
 //                scaleX = (float) (scaleX / 4);
 //                scaleX = (float) (scaleX * 3);
-float scaleY = (float) (img.getHeight());
+                    float scaleY = (float) (img.getHeight());
 // scaleY = (float) (scaleY / 4);
 //                scaleY = (float) (scaleY * 3);
-                
-                int finalScaleX = (int)scaleX;
-                int finalScaleY = (int)scaleY;
-System.out.println("Image: " + fileName + "| Height: " + finalScaleY + "| Width: " + finalScaleX);
 
-if(finalScaleX == 0){
-    finalScaleX = 1;
-}
-if(finalScaleY == 0){
-    finalScaleY = 1;
-}
+                    int finalScaleX = (int) scaleX;
+                    int finalScaleY = (int) scaleY;
+                    System.out.println("Image: " + fileName + "| Height: " + finalScaleY + "| Width: " + finalScaleX);
 
+                    if (finalScaleX == 0) {
+                        finalScaleX = 1;
+                    }
+                    if (finalScaleY == 0) {
+                        finalScaleY = 1;
+                    }
 
+                    Image newImg = img.getScaledInstance(finalScaleX, finalScaleY, Image.SCALE_SMOOTH);
 
+                    BufferedImage bImage;
+                    if (img.getColorModel().toString().contains("has alpha = false")) {
+                        bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_RGB);
 
+                    } else {
+                        bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_ARGB);
 
-Image newImg = img.getScaledInstance(finalScaleX, finalScaleY, Image.SCALE_SMOOTH);
+                    }
 
-BufferedImage bImage;
-if(img.getColorModel().toString().contains("has alpha = false")){
-    bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_RGB);
+                    Graphics2D bImageGraphics = bImage.createGraphics();
 
-}else{
-    bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+                    bImageGraphics.drawImage(newImg, null, null);
 
-}
+                    RenderedImage rImage = (RenderedImage) bImage;
 
-
-Graphics2D bImageGraphics = bImage.createGraphics();
-
-
-bImageGraphics.drawImage(newImg, null, null);
-
-
-RenderedImage rImage = (RenderedImage)bImage;
-
-
-File outputfile = new File(xxhdpiDirectory + "/" + fileName);
+                    File outputfile = new File(xxhdpiDirectory + "/" + fileName);
 //    ImageIO.write((RenderedImage) newImg, "png", outputfile);
 //for (Picture pic : allPictures){
 //    File newFilePic = new File(fileName);
-    ImageIO.write(rImage, ext, outputfile);
-    
+                    ImageIO.write(rImage, ext, outputfile);
+
 //    pic.writeImageContent(new DataOutputStream(new FileOutputStream(newFilePic)));
 //    FileUtils.copyFileToDirectory(newFilePic, new File(tmpDir.toString()));
 //    FileUtils.forceDelete(newFilePic);
 //}
+                }
             }
-        }
-        GenerateProgressBar.setValue(0);
-         OutputTxtArea.append("XXHDPI complete\n");
+            GenerateProgressBar.setValue(0);
+            OutputTxtArea.append("XXHDPI complete\n");
         }
 
-
-        if(chkLDPI.isSelected()){
+        if (chkLDPI.isSelected() && OriginDensity.getSelectedIndex() <= 4) {
             GenerateProgressBar.setString("TEST");
-        ldpiDirectory = new File(originalDirectory.getParent()+"/" + PrefixText.getText() + "ldpi");
-        if(!ldpiDirectory.exists()){
-            ldpiDirectory.mkdir();
-             OutputTxtArea.append("Creating " + PrefixText.getText() + "ldpi\n");
-        }else{
-            OutputTxtArea.append(PrefixText.getText() + "ldpi already exists, copying assets into this folder\n");
-        }
-        int i;
-       GenerateProgressBar.setMaximum(fileList.length);
-        for(i=0; i<fileList.length; i++){
-            GenerateProgressBar.setValue(i);
-            System.out.println(fileList[i].getName());
-             OutputTxtArea.append("Processing LDPI - "+ i + " of " + fileList.length + "\n");
-            String fileName = fileList[i].getName();
-            if(fileName.contains(".png")||fileName.contains(".gif")||fileName.contains(".jpg")){
-                ext = fileName.substring(fileName.length()-3);
-                System.out.println(ext);
-                BufferedImage img = ImageIO.read(fileList[i]);
-                float scaleX = (float) (img.getWidth() / 4);
+            ldpiDirectory = new File(originalDirectory.getParent() + "/" + PrefixText.getText() + "ldpi");
+            if (!ldpiDirectory.exists()) {
+                ldpiDirectory.mkdir();
+                OutputTxtArea.append("Creating " + PrefixText.getText() + "ldpi\n");
+            } else {
+                OutputTxtArea.append(PrefixText.getText() + "ldpi already exists, copying assets into this folder\n");
+            }
+            int i;
+            GenerateProgressBar.setMaximum(fileList.length);
+            for (i = 0; i < fileList.length; i++) {
+                GenerateProgressBar.setValue(i);
+                System.out.println(fileList[i].getName());
+                OutputTxtArea.append("Processing LDPI - " + i + " of " + fileList.length + "\n");
+                String fileName = fileList[i].getName();
+                if (fileName.contains(".png") || fileName.contains(".gif") || fileName.contains(".jpg")) {
+                    ext = fileName.substring(fileName.length() - 3);
+                    System.out.println(ext);
+                    BufferedImage img = ImageIO.read(fileList[i]);
+                    float scaleX = (float) (img.getWidth() / LDPIScale);
 //                scaleX = (float) (scaleX / 4);
 //                scaleX = (float) (scaleX * 3);
-float scaleY = (float) (img.getHeight() / 4);
+                    float scaleY = (float) (img.getHeight() / LDPIScale);
 // scaleY = (float) (scaleY / 4);
 //                scaleY = (float) (scaleY * 3);
-                
-                int finalScaleX = (int)scaleX;
-                int finalScaleY = (int)scaleY;
-System.out.println("Image: " + fileName + "| Height: " + finalScaleY + "| Width: " + finalScaleX);
 
-if(finalScaleX == 0){
-    finalScaleX = 1;
-}
-if(finalScaleY == 0){
-    finalScaleY = 1;
-}
+                    int finalScaleX = (int) scaleX;
+                    int finalScaleY = (int) scaleY;
+                    System.out.println("Image: " + fileName + "| Height: " + finalScaleY + "| Width: " + finalScaleX);
 
-Image newImg = img.getScaledInstance(finalScaleX, finalScaleY, Image.SCALE_SMOOTH);
+                    if (finalScaleX == 0) {
+                        finalScaleX = 1;
+                    }
+                    if (finalScaleY == 0) {
+                        finalScaleY = 1;
+                    }
 
-BufferedImage bImage;
-if(img.getColorModel().toString().contains("has alpha = false")){
-    bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_RGB);
+                    Image newImg = img.getScaledInstance(finalScaleX, finalScaleY, Image.SCALE_SMOOTH);
 
-}else{
-    bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+                    BufferedImage bImage;
+                    if (img.getColorModel().toString().contains("has alpha = false")) {
+                        bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_RGB);
 
-}
+                    } else {
+                        bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_ARGB);
 
+                    }
 
+                    Graphics2D bImageGraphics = bImage.createGraphics();
 
-Graphics2D bImageGraphics = bImage.createGraphics();
+                    bImageGraphics.drawImage(newImg, null, null);
 
+                    RenderedImage rImage = (RenderedImage) bImage;
 
-bImageGraphics.drawImage(newImg, null, null);
-
-
-RenderedImage rImage = (RenderedImage)bImage;
-
-
-File outputfile = new File(ldpiDirectory + "/" + fileName);
+                    File outputfile = new File(ldpiDirectory + "/" + fileName);
 //    ImageIO.write((RenderedImage) newImg, "png", outputfile);
 //for (Picture pic : allPictures){
 //    File newFilePic = new File(fileName);
-    ImageIO.write(rImage, ext, outputfile);
-    
+                    ImageIO.write(rImage, ext, outputfile);
+
 //    pic.writeImageContent(new DataOutputStream(new FileOutputStream(newFilePic)));
 //    FileUtils.copyFileToDirectory(newFilePic, new File(tmpDir.toString()));
 //    FileUtils.forceDelete(newFilePic);
 //}
+                }
             }
+            GenerateProgressBar.setValue(0);
+            OutputTxtArea.append("LDPI complete\n");
         }
-        GenerateProgressBar.setValue(0);
-         OutputTxtArea.append("LDPI complete\n");
-        }
-        if(chkMDPI.isSelected()){
-        mdpiDirectory = new File(originalDirectory.getParent()+"/" + PrefixText.getText() + "mdpi");
-        if(!mdpiDirectory.exists()){
-            mdpiDirectory.mkdir();
-            OutputTxtArea.append("Creating " + PrefixText.getText() + "mdpi\n");
-        }else{
-            OutputTxtArea.append(PrefixText.getText() + "mdpi already exists, copying assets into this folder\n");
-        }
-        int i;
-        GenerateProgressBar.setMaximum(fileList.length);
-        for(i=0; i<fileList.length; i++){
-            GenerateProgressBar.setValue(i);
-            OutputTxtArea.append("Processing MDPI - "+ i + " of " + fileList.length + "\n");
-            System.out.println(fileList[i].getName());
-            String fileName = fileList[i].getName();
-            if(fileName.contains(".png")||fileName.contains(".gif")||fileName.contains(".jpg")){
-                ext = fileName.substring(fileName.length()-3);
-                System.out.println(ext);
-                BufferedImage img = ImageIO.read(fileList[i]);
-                float scaleX = (float) (img.getWidth() / 3);
+        if (chkMDPI.isSelected() && OriginDensity.getSelectedIndex() <= 3) {
+            mdpiDirectory = new File(originalDirectory.getParent() + "/" + PrefixText.getText() + "mdpi");
+            if (!mdpiDirectory.exists()) {
+                mdpiDirectory.mkdir();
+                OutputTxtArea.append("Creating " + PrefixText.getText() + "mdpi\n");
+            } else {
+                OutputTxtArea.append(PrefixText.getText() + "mdpi already exists, copying assets into this folder\n");
+            }
+            int i;
+            GenerateProgressBar.setMaximum(fileList.length);
+            for (i = 0; i < fileList.length; i++) {
+                GenerateProgressBar.setValue(i);
+                OutputTxtArea.append("Processing MDPI - " + i + " of " + fileList.length + "\n");
+                System.out.println(fileList[i].getName());
+                String fileName = fileList[i].getName();
+                if (fileName.contains(".png") || fileName.contains(".gif") || fileName.contains(".jpg")) {
+                    ext = fileName.substring(fileName.length() - 3);
+                    System.out.println(ext);
+                    BufferedImage img = ImageIO.read(fileList[i]);
+                    float scaleX = (float) (img.getWidth() / MDPIScale);
 //                scaleX = (float) (scaleX / 4);
 //                scaleX = (float) (scaleX * 3);
-float scaleY = (float) (img.getHeight() / 3);
+                    float scaleY = (float) (img.getHeight() / MDPIScale);
 // scaleY = (float) (scaleY / 4);
 //                scaleY = (float) (scaleY * 3);
-                
-                int finalScaleX = (int)scaleX;
-                int finalScaleY = (int)scaleY;
-System.out.println("Image: " + fileName + "| Height: " + finalScaleY + "| Width: " + finalScaleX);
-Image newImg = img.getScaledInstance(finalScaleX, finalScaleY, Image.SCALE_SMOOTH);
 
+                    int finalScaleX = (int) scaleX;
+                    int finalScaleY = (int) scaleY;
+                    System.out.println("Image: " + fileName + "| Height: " + finalScaleY + "| Width: " + finalScaleX);
+                    Image newImg = img.getScaledInstance(finalScaleX, finalScaleY, Image.SCALE_SMOOTH);
 
-BufferedImage bImage;if(img.getColorModel().toString().contains("has alpha = false")){    bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_RGB);}else{    bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_ARGB);}
+                    BufferedImage bImage;
+                    if (img.getColorModel().toString().contains("has alpha = false")) {
+                        bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_RGB);
+                    } else {
+                        bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+                    }
 
+                    Graphics2D bImageGraphics = bImage.createGraphics();
 
-Graphics2D bImageGraphics = bImage.createGraphics();
+                    bImageGraphics.drawImage(newImg, null, null);
 
+                    RenderedImage rImage = (RenderedImage) bImage;
 
-bImageGraphics.drawImage(newImg, null, null);
-
-
-RenderedImage rImage = (RenderedImage)bImage;
-
-
-File outputfile = new File(mdpiDirectory + "/" + fileName);
+                    File outputfile = new File(mdpiDirectory + "/" + fileName);
 //    ImageIO.write((RenderedImage) newImg, "png", outputfile);
 //for (Picture pic : allPictures){
 //    File newFilePic = new File(fileName);
-    ImageIO.write(rImage, ext, outputfile);
-    
+                    ImageIO.write(rImage, ext, outputfile);
+
 //    pic.writeImageContent(new DataOutputStream(new FileOutputStream(newFilePic)));
 //    FileUtils.copyFileToDirectory(newFilePic, new File(tmpDir.toString()));
 //    FileUtils.forceDelete(newFilePic);
 //}
+                }
             }
+            GenerateProgressBar.setValue(0);
+            OutputTxtArea.append("MDPI complete\n");
         }
-        GenerateProgressBar.setValue(0);
-        OutputTxtArea.append("MDPI complete\n");
-        }
-        if(chkTVDPI.isSelected()){
-        tvdpiDirectory = new File(originalDirectory.getParent()+"/" + PrefixText.getText() + "tvdpi");
-        if(!tvdpiDirectory.exists()){
-            OutputTxtArea.append("Creating " + PrefixText.getText() + "tvdpi\n");
-            tvdpiDirectory.mkdir();
-        }else{
-            OutputTxtArea.append(PrefixText.getText() + "tvdpi already exists, copying assets into this folder\n");
-        }
-        int i;
-        
-      GenerateProgressBar.setMaximum(fileList.length);
-        for(i=0; i<fileList.length; i++){
-            GenerateProgressBar.setValue(i);
-            OutputTxtArea.append("Processing TVDPI - "+ i + " of " + fileList.length + "\n");
-            System.out.println(fileList[i].getName());
-            String fileName = fileList[i].getName();
-            if(fileName.contains(".png")||fileName.contains(".gif")||fileName.contains(".jpg")){
-                ext = fileName.substring(fileName.length()-3);
-                System.out.println(ext);
-                BufferedImage img = ImageIO.read(fileList[i]);
-                float scaleX = (float) (img.getWidth() / 2.256);
+        if (chkTVDPI.isSelected() && OriginDensity.getSelectedIndex() <= 2) {
+            tvdpiDirectory = new File(originalDirectory.getParent() + "/" + PrefixText.getText() + "tvdpi");
+            if (!tvdpiDirectory.exists()) {
+                OutputTxtArea.append("Creating " + PrefixText.getText() + "tvdpi\n");
+                tvdpiDirectory.mkdir();
+            } else {
+                OutputTxtArea.append(PrefixText.getText() + "tvdpi already exists, copying assets into this folder\n");
+            }
+            int i;
+
+            GenerateProgressBar.setMaximum(fileList.length);
+            for (i = 0; i < fileList.length; i++) {
+                GenerateProgressBar.setValue(i);
+                OutputTxtArea.append("Processing TVDPI - " + i + " of " + fileList.length + "\n");
+                System.out.println(fileList[i].getName());
+                String fileName = fileList[i].getName();
+                if (fileName.contains(".png") || fileName.contains(".gif") || fileName.contains(".jpg")) {
+                    ext = fileName.substring(fileName.length() - 3);
+                    System.out.println(ext);
+                    BufferedImage img = ImageIO.read(fileList[i]);
+                    float scaleX = (float) (img.getWidth() / TVDPIScale);
 //                scaleX = (float) (scaleX / 4);
 //                scaleX = (float) (scaleX * 3);
-float scaleY = (float) (img.getHeight() / 2.256);
+                    float scaleY = (float) (img.getHeight() / TVDPIScale);
 // scaleY = (float) (scaleY / 4);
 //                scaleY = (float) (scaleY * 3);
-                
-                int finalScaleX = (int)scaleX;
-                int finalScaleY = (int)scaleY;
-System.out.println("Image: " + fileName + "| Height: " + finalScaleY + "| Width: " + finalScaleX);
-Image newImg = img.getScaledInstance(finalScaleX, finalScaleY, Image.SCALE_SMOOTH);
 
+                    int finalScaleX = (int) scaleX;
+                    int finalScaleY = (int) scaleY;
+                    System.out.println("Image: " + fileName + "| Height: " + finalScaleY + "| Width: " + finalScaleX);
+                    Image newImg = img.getScaledInstance(finalScaleX, finalScaleY, Image.SCALE_SMOOTH);
 
-BufferedImage bImage;if(img.getColorModel().toString().contains("has alpha = false")){    bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_RGB);}else{    bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_ARGB);}
+                    BufferedImage bImage;
+                    if (img.getColorModel().toString().contains("has alpha = false")) {
+                        bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_RGB);
+                    } else {
+                        bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+                    }
 
+                    Graphics2D bImageGraphics = bImage.createGraphics();
 
-Graphics2D bImageGraphics = bImage.createGraphics();
+                    bImageGraphics.drawImage(newImg, null, null);
 
+                    RenderedImage rImage = (RenderedImage) bImage;
 
-bImageGraphics.drawImage(newImg, null, null);
-
-
-RenderedImage rImage = (RenderedImage)bImage;
-
-
-File outputfile = new File(tvdpiDirectory + "/" + fileName);
+                    File outputfile = new File(tvdpiDirectory + "/" + fileName);
 //    ImageIO.write((RenderedImage) newImg, "png", outputfile);
 //for (Picture pic : allPictures){
 //    File newFilePic = new File(fileName);
-    ImageIO.write(rImage, ext, outputfile);
-    
+                    ImageIO.write(rImage, ext, outputfile);
+
 //    pic.writeImageContent(new DataOutputStream(new FileOutputStream(newFilePic)));
 //    FileUtils.copyFileToDirectory(newFilePic, new File(tmpDir.toString()));
 //    FileUtils.forceDelete(newFilePic);
 //}
+                }
             }
+            GenerateProgressBar.setValue(0);
+            OutputTxtArea.append("TVDPI complete\n");
         }
-        GenerateProgressBar.setValue(0);
-        OutputTxtArea.append("TVDPI complete\n");
-        }
-        if(chkHDPI.isSelected()){
-        hdpiDirectory = new File(originalDirectory.getParent()+"/" + PrefixText.getText() + "hdpi");
-        if(!hdpiDirectory.exists()){
-            OutputTxtArea.append("Creating " + PrefixText.getText() + "hdpi\n");
-            hdpiDirectory.mkdir();
-        }else{
-            OutputTxtArea.append(PrefixText.getText() + "hdpi already exists, copying assets into this folder\n");
-        }
-        int i;
-        GenerateProgressBar.setMaximum(fileList.length);
-        for(i=0; i<fileList.length; i++){
-            GenerateProgressBar.setValue(i);
-            OutputTxtArea.append("Processing HDPI - "+ i + " of " + fileList.length + "\n");
-            System.out.println(fileList[i].getName());
-            String fileName = fileList[i].getName();
-            if(fileName.contains(".png")||fileName.contains(".gif")||fileName.contains(".jpg")){
-                ext = fileName.substring(fileName.length()-3);
-                System.out.println(ext);
-                BufferedImage img = ImageIO.read(fileList[i]);
-                float scaleX = (float) (img.getWidth() / 2);
+        if (chkHDPI.isSelected() && OriginDensity.getSelectedIndex() <= 1) {
+            hdpiDirectory = new File(originalDirectory.getParent() + "/" + PrefixText.getText() + "hdpi");
+            if (!hdpiDirectory.exists()) {
+                OutputTxtArea.append("Creating " + PrefixText.getText() + "hdpi\n");
+                hdpiDirectory.mkdir();
+            } else {
+                OutputTxtArea.append(PrefixText.getText() + "hdpi already exists, copying assets into this folder\n");
+            }
+            int i;
+            GenerateProgressBar.setMaximum(fileList.length);
+            for (i = 0; i < fileList.length; i++) {
+                GenerateProgressBar.setValue(i);
+                OutputTxtArea.append("Processing HDPI - " + i + " of " + fileList.length + "\n");
+                System.out.println(fileList[i].getName());
+                String fileName = fileList[i].getName();
+                if (fileName.contains(".png") || fileName.contains(".gif") || fileName.contains(".jpg")) {
+                    ext = fileName.substring(fileName.length() - 3);
+                    System.out.println(ext);
+                    BufferedImage img = ImageIO.read(fileList[i]);
+                    float scaleX = (float) (img.getWidth() / HDPIScale);
 //                scaleX = (float) (scaleX / 4);
 //                scaleX = (float) (scaleX * 3);
-float scaleY = (float) (img.getHeight() / 2);
+                    float scaleY = (float) (img.getHeight() / HDPIScale);
 // scaleY = (float) (scaleY / 4);
 //                scaleY = (float) (scaleY * 3);
-                
-                int finalScaleX = (int)scaleX;
-                int finalScaleY = (int)scaleY;
-System.out.println("Image: " + fileName + "| Height: " + finalScaleY + "| Width: " + finalScaleX);
-Image newImg = img.getScaledInstance(finalScaleX, finalScaleY, Image.SCALE_SMOOTH);
 
+                    int finalScaleX = (int) scaleX;
+                    int finalScaleY = (int) scaleY;
+                    System.out.println("Image: " + fileName + "| Height: " + finalScaleY + "| Width: " + finalScaleX);
+                    Image newImg = img.getScaledInstance(finalScaleX, finalScaleY, Image.SCALE_SMOOTH);
 
-BufferedImage bImage;if(img.getColorModel().toString().contains("has alpha = false")){    bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_RGB);}else{    bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_ARGB);}
+                    BufferedImage bImage;
+                    if (img.getColorModel().toString().contains("has alpha = false")) {
+                        bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_RGB);
+                    } else {
+                        bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+                    }
 
+                    Graphics2D bImageGraphics = bImage.createGraphics();
 
-Graphics2D bImageGraphics = bImage.createGraphics();
+                    bImageGraphics.drawImage(newImg, null, null);
 
+                    RenderedImage rImage = (RenderedImage) bImage;
 
-bImageGraphics.drawImage(newImg, null, null);
-
-
-RenderedImage rImage = (RenderedImage)bImage;
-
-
-File outputfile = new File(hdpiDirectory + "/" + fileName);
+                    File outputfile = new File(hdpiDirectory + "/" + fileName);
 //    ImageIO.write((RenderedImage) newImg, "png", outputfile);
 //for (Picture pic : allPictures){
 //    File newFilePic = new File(fileName);
-    ImageIO.write(rImage, ext, outputfile);
-    
+                    ImageIO.write(rImage, ext, outputfile);
+
 //    pic.writeImageContent(new DataOutputStream(new FileOutputStream(newFilePic)));
 //    FileUtils.copyFileToDirectory(newFilePic, new File(tmpDir.toString()));
 //    FileUtils.forceDelete(newFilePic);
 //}
+                }
             }
+            GenerateProgressBar.setValue(0);
+            OutputTxtArea.append("HDPI Complete\n");
         }
-        GenerateProgressBar.setValue(0);
-        OutputTxtArea.append("HDPI Complete\n");
-        }
-        if(chkXHDPI.isSelected()){
-        xhdpiDirectory = new File(originalDirectory.getParent()+"/" + PrefixText.getText() + "xhdpi");
-        if(!xhdpiDirectory.exists()){
-            OutputTxtArea.append("Creating " + PrefixText.getText() + "xhdpi\n");
-            xhdpiDirectory.mkdir();
-        }else{
-            OutputTxtArea.append(PrefixText.getText() + "xhdpi already exists, copying assets into this folder\n");
-        }
-        int i;
-        GenerateProgressBar.setMaximum(fileList.length);
-        for(i=0; i<fileList.length; i++){
-            GenerateProgressBar.setValue(i);
-            OutputTxtArea.append("Processing XHDPI - "+ i + " of " + fileList.length + "\n");
-            System.out.println(fileList[i].getName());
-            String fileName = fileList[i].getName();
-            if(fileName.contains(".png")||fileName.contains(".gif")||fileName.contains(".jpg")){
-                ext = fileName.substring(fileName.length()-3);
-                System.out.println(ext);
-                BufferedImage img = ImageIO.read(fileList[i]);
-                float scaleX = (float) (img.getWidth() / 1.5);
+        if (chkXHDPI.isSelected() && OriginDensity.getSelectedIndex() <= 0) {
+            xhdpiDirectory = new File(originalDirectory.getParent() + "/" + PrefixText.getText() + "xhdpi");
+            if (!xhdpiDirectory.exists()) {
+                OutputTxtArea.append("Creating " + PrefixText.getText() + "xhdpi\n");
+                xhdpiDirectory.mkdir();
+            } else {
+                OutputTxtArea.append(PrefixText.getText() + "xhdpi already exists, copying assets into this folder\n");
+            }
+            int i;
+            GenerateProgressBar.setMaximum(fileList.length);
+            for (i = 0; i < fileList.length; i++) {
+                GenerateProgressBar.setValue(i);
+                OutputTxtArea.append("Processing XHDPI - " + i + " of " + fileList.length + "\n");
+                System.out.println(fileList[i].getName());
+                String fileName = fileList[i].getName();
+                if (fileName.contains(".png") || fileName.contains(".gif") || fileName.contains(".jpg")) {
+                    ext = fileName.substring(fileName.length() - 3);
+                    System.out.println(ext);
+                    BufferedImage img = ImageIO.read(fileList[i]);
+                    float scaleX = (float) (img.getWidth() / XHDPIScale);
 //                scaleX = (float) (scaleX / 4);
 //                scaleX = (float) (scaleX * 3);
-float scaleY = (float) (img.getHeight() / 1.5);
+                    float scaleY = (float) (img.getHeight() / XHDPIScale);
 // scaleY = (float) (scaleY / 4);
 //                scaleY = (float) (scaleY * 3);
-                
-                int finalScaleX = (int)scaleX;
-                int finalScaleY = (int)scaleY;
-System.out.println("Image: " + fileName + "| Height: " + finalScaleY + "| Width: " + finalScaleX);
-Image newImg = img.getScaledInstance(finalScaleX, finalScaleY, Image.SCALE_SMOOTH);
 
+                    int finalScaleX = (int) scaleX;
+                    int finalScaleY = (int) scaleY;
+                    System.out.println("Image: " + fileName + "| Height: " + finalScaleY + "| Width: " + finalScaleX);
+                    Image newImg = img.getScaledInstance(finalScaleX, finalScaleY, Image.SCALE_SMOOTH);
 
-BufferedImage bImage;if(img.getColorModel().toString().contains("has alpha = false")){    bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_RGB);}else{    bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_ARGB);}
+                    BufferedImage bImage;
+                    if (img.getColorModel().toString().contains("has alpha = false")) {
+                        bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_RGB);
+                    } else {
+                        bImage = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+                    }
 
+                    Graphics2D bImageGraphics = bImage.createGraphics();
 
-Graphics2D bImageGraphics = bImage.createGraphics();
+                    bImageGraphics.drawImage(newImg, null, null);
 
+                    RenderedImage rImage = (RenderedImage) bImage;
 
-bImageGraphics.drawImage(newImg, null, null);
-
-
-RenderedImage rImage = (RenderedImage)bImage;
-
-
-File outputfile = new File(xhdpiDirectory + "/" + fileName);
+                    File outputfile = new File(xhdpiDirectory + "/" + fileName);
 //    ImageIO.write((RenderedImage) newImg, "png", outputfile);
 //for (Picture pic : allPictures){
 //    File newFilePic = new File(fileName);
-    ImageIO.write(rImage, ext, outputfile);
-    
+                    ImageIO.write(rImage, ext, outputfile);
+
 //    pic.writeImageContent(new DataOutputStream(new FileOutputStream(newFilePic)));
 //    FileUtils.copyFileToDirectory(newFilePic, new File(tmpDir.toString()));
 //    FileUtils.forceDelete(newFilePic);
 //}
+                }
             }
+            GenerateProgressBar.setValue(0);
+            OutputTxtArea.append("XHDPI Complete\n");
         }
-        GenerateProgressBar.setValue(0);
-        OutputTxtArea.append("XHDPI Complete\n");
-        }
-        
+
         OutputTxtArea.append("Re-sizing complete.");
-        
+
         GenerateButton.setEnabled(true);
-    chkHDPI.setEnabled(true);
-    chkXHDPI.setEnabled(true);
-    chkLDPI.setEnabled(true);
-    chkMDPI.setEnabled(true);
-    chkTVDPI.setEnabled(true);
-    BrowseButton.setEnabled(true);
-    PrefixCheckbox.setEnabled(true);
-    FileField.setEnabled(true);
-    
-    if(PrefixCheckbox.isSelected()){
-        PrefixText.setEnabled(true);
-        CopyXXHDPIChk.setEnabled(true);
+        chkHDPI.setEnabled(true);
+        chkXHDPI.setEnabled(true);
+        chkLDPI.setEnabled(true);
+        chkMDPI.setEnabled(true);
+        chkTVDPI.setEnabled(true);
+        BrowseButton.setEnabled(true);
+        PrefixCheckbox.setEnabled(true);
+        FileField.setEnabled(true);
+        OriginDensity.setEnabled(true);
+
+        if (PrefixCheckbox.isSelected()) {
+            PrefixText.setEnabled(true);
+            CopyXXHDPIChk.setEnabled(true);
+        }
+
     }
-    
-    }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -901,13 +970,11 @@ File outputfile = new File(xhdpiDirectory + "/" + fileName);
                 new AResizerFrame().setVisible(true);
             }
         });
-        
-        
-        
+
     }
-    
-    public void test(){
-        
+
+    public void test() {
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -918,6 +985,7 @@ File outputfile = new File(xhdpiDirectory + "/" + fileName);
     private javax.swing.JLabel FolderLabel;
     private javax.swing.JButton GenerateButton;
     private javax.swing.JProgressBar GenerateProgressBar;
+    private javax.swing.JComboBox OriginDensity;
     private javax.swing.JTextArea OutputTxtArea;
     public javax.swing.JCheckBox PrefixCheckbox;
     private javax.swing.JTextField PrefixText;
@@ -927,7 +995,6 @@ File outputfile = new File(xhdpiDirectory + "/" + fileName);
     private javax.swing.JCheckBox chkMDPI;
     private javax.swing.JCheckBox chkTVDPI;
     private javax.swing.JCheckBox chkXHDPI;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

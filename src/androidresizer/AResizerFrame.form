@@ -115,7 +115,7 @@
                                   <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                                   <Component id="ChooseLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                  <Component id="jComboBox1" min="-2" pref="77" max="-2" attributes="0"/>
+                                  <Component id="OriginDensity" min="-2" pref="77" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                   <Component id="FolderLabel" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -149,7 +149,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="ChooseLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="FolderLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox1" alignment="3" min="-2" pref="18" max="-2" attributes="0"/>
+                      <Component id="OriginDensity" alignment="3" min="-2" pref="18" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="FileField" min="-2" max="-2" attributes="0"/>
@@ -330,20 +330,27 @@
             <Property name="text" type="java.lang.String" value="Folder"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="OriginDensity">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="99" red="99" type="rgb"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="1">
+              <StringArray count="5">
                 <StringItem index="0" value="XXHDPI"/>
+                <StringItem index="1" value="XHDPI"/>
+                <StringItem index="2" value="HDPI"/>
+                <StringItem index="3" value="TVDPI"/>
+                <StringItem index="4" value="MDPI"/>
               </StringArray>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OriginDensityActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
