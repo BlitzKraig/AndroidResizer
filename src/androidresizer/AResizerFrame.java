@@ -109,7 +109,7 @@ public class AResizerFrame extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         PrefixText = new javax.swing.JTextField();
         PrefixCheckbox = new javax.swing.JCheckBox();
-        CopyXXHDPIChk = new javax.swing.JCheckBox();
+        CopyOriginChk = new javax.swing.JCheckBox();
         FolderLabel = new javax.swing.JLabel();
         OriginDensity = new javax.swing.JComboBox();
 
@@ -189,22 +189,22 @@ public class AResizerFrame extends javax.swing.JFrame {
             }
         });
 
-        PrefixCheckbox.setText("Change default prefix?");
         PrefixCheckbox.setToolTipText("This will determine what folders the downscaled images will create or be moved into. (Default is drawable-)");
         PrefixCheckbox.setActionCommand("PrefixCheck");
+        PrefixCheckbox.setLabel("Override default prefix?");
         PrefixCheckbox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PrefixCheckboxActionPerformed(evt);
             }
         });
 
-        CopyXXHDPIChk.setText("Copy XXHDPI with prefix?");
-        CopyXXHDPIChk.setToolTipText("Select this to copy the source folder with the custom prefix");
-        CopyXXHDPIChk.setActionCommand("PrefixCheck");
-        CopyXXHDPIChk.setEnabled(false);
-        CopyXXHDPIChk.addActionListener(new java.awt.event.ActionListener() {
+        CopyOriginChk.setToolTipText("Select this to copy the source folder with the custom prefix");
+        CopyOriginChk.setActionCommand("PrefixCheck");
+        CopyOriginChk.setEnabled(false);
+        CopyOriginChk.setLabel("Copy origin with prefix?");
+        CopyOriginChk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CopyXXHDPIChkActionPerformed(evt);
+                CopyOriginChkActionPerformed(evt);
             }
         });
 
@@ -264,7 +264,7 @@ public class AResizerFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CopyXXHDPIChk)
+                    .addComponent(CopyOriginChk)
                     .addComponent(PrefixCheckbox)
                     .addComponent(PrefixText, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -286,7 +286,7 @@ public class AResizerFrame extends javax.swing.JFrame {
                 .addGap(4, 4, 4)
                 .addComponent(PrefixCheckbox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CopyXXHDPIChk)
+                .addComponent(CopyOriginChk)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PrefixText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
@@ -331,20 +331,20 @@ public class AResizerFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CopyXXHDPIChkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CopyXXHDPIChkActionPerformed
+    private void CopyOriginChkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CopyOriginChkActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CopyXXHDPIChkActionPerformed
+    }//GEN-LAST:event_CopyOriginChkActionPerformed
 
     private void PrefixCheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrefixCheckboxActionPerformed
         // TODO add your handling code here:
         if (PrefixCheckbox.isSelected()) {
             PrefixText.setEnabled(true);
-            CopyXXHDPIChk.setEnabled(true);
+            CopyOriginChk.setEnabled(true);
         } else {
             PrefixText.setEnabled(false);
             PrefixText.setText("drawable-");
-            CopyXXHDPIChk.setSelected(false);
-            CopyXXHDPIChk.setEnabled(false);
+            CopyOriginChk.setSelected(false);
+            CopyOriginChk.setEnabled(false);
 
         }
     }//GEN-LAST:event_PrefixCheckboxActionPerformed
@@ -379,7 +379,7 @@ public class AResizerFrame extends javax.swing.JFrame {
             chkTVDPI.setEnabled(false);
             BrowseButton.setEnabled(false);
             PrefixCheckbox.setEnabled(false);
-            CopyXXHDPIChk.setEnabled(false);
+            CopyOriginChk.setEnabled(false);
             PrefixText.setEnabled(false);
             FileField.setEnabled(false);
             OriginDensity.setEnabled(false);
@@ -536,7 +536,7 @@ public class AResizerFrame extends javax.swing.JFrame {
 
         }
 
-        if (CopyXXHDPIChk.isSelected() && OriginDensity.getSelectedIndex() <= 0) {
+        if (CopyOriginChk.isSelected() && OriginDensity.getSelectedIndex() <= 0) {
 
             xxhdpiDirectory = new File(originalDirectory.getParent() + "/" + PrefixText.getText() + "xxhdpi");
             if (!xxhdpiDirectory.exists()) {
@@ -677,7 +677,7 @@ public class AResizerFrame extends javax.swing.JFrame {
             GenerateProgressBar.setValue(0);
             OutputTxtArea.append("LDPI complete\n");
         }
-        if (chkMDPI.isSelected() && OriginDensity.getSelectedIndex() <= 3) {
+        if ((chkMDPI.isSelected() && OriginDensity.getSelectedIndex() <= 3)|| (CopyOriginChk.isSelected() && OriginDensity.getSelectedIndex() == 4)) {
             mdpiDirectory = new File(originalDirectory.getParent() + "/" + PrefixText.getText() + "mdpi");
             if (!mdpiDirectory.exists()) {
                 mdpiDirectory.mkdir();
@@ -736,7 +736,7 @@ public class AResizerFrame extends javax.swing.JFrame {
             GenerateProgressBar.setValue(0);
             OutputTxtArea.append("MDPI complete\n");
         }
-        if (chkTVDPI.isSelected() && OriginDensity.getSelectedIndex() <= 2) {
+        if ((chkTVDPI.isSelected() && OriginDensity.getSelectedIndex() <= 2) || (CopyOriginChk.isSelected() && OriginDensity.getSelectedIndex() == 3)) {
             tvdpiDirectory = new File(originalDirectory.getParent() + "/" + PrefixText.getText() + "tvdpi");
             if (!tvdpiDirectory.exists()) {
                 OutputTxtArea.append("Creating " + PrefixText.getText() + "tvdpi\n");
@@ -796,7 +796,7 @@ public class AResizerFrame extends javax.swing.JFrame {
             GenerateProgressBar.setValue(0);
             OutputTxtArea.append("TVDPI complete\n");
         }
-        if (chkHDPI.isSelected() && OriginDensity.getSelectedIndex() <= 1) {
+        if ((chkHDPI.isSelected() && OriginDensity.getSelectedIndex() <= 1) || (CopyOriginChk.isSelected() && OriginDensity.getSelectedIndex() == 2)) {
             hdpiDirectory = new File(originalDirectory.getParent() + "/" + PrefixText.getText() + "hdpi");
             if (!hdpiDirectory.exists()) {
                 OutputTxtArea.append("Creating " + PrefixText.getText() + "hdpi\n");
@@ -855,7 +855,7 @@ public class AResizerFrame extends javax.swing.JFrame {
             GenerateProgressBar.setValue(0);
             OutputTxtArea.append("HDPI Complete\n");
         }
-        if (chkXHDPI.isSelected() && OriginDensity.getSelectedIndex() <= 0) {
+        if ((chkXHDPI.isSelected() && OriginDensity.getSelectedIndex() <= 0)|| (CopyOriginChk.isSelected() && OriginDensity.getSelectedIndex() == 1)) {
             xhdpiDirectory = new File(originalDirectory.getParent() + "/" + PrefixText.getText() + "xhdpi");
             if (!xhdpiDirectory.exists()) {
                 OutputTxtArea.append("Creating " + PrefixText.getText() + "xhdpi\n");
@@ -930,7 +930,7 @@ public class AResizerFrame extends javax.swing.JFrame {
 
         if (PrefixCheckbox.isSelected()) {
             PrefixText.setEnabled(true);
-            CopyXXHDPIChk.setEnabled(true);
+            CopyOriginChk.setEnabled(true);
         }
 
     }
@@ -980,7 +980,7 @@ public class AResizerFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BrowseButton;
     private javax.swing.JLabel ChooseLabel;
-    public javax.swing.JCheckBox CopyXXHDPIChk;
+    public javax.swing.JCheckBox CopyOriginChk;
     private javax.swing.JTextField FileField;
     private javax.swing.JLabel FolderLabel;
     private javax.swing.JButton GenerateButton;

@@ -132,7 +132,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="CopyXXHDPIChk" min="-2" max="-2" attributes="0"/>
+                      <Component id="CopyOriginChk" min="-2" max="-2" attributes="0"/>
                       <Component id="PrefixCheckbox" min="-2" max="-2" attributes="0"/>
                       <Component id="PrefixText" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
                   </Group>
@@ -158,7 +158,7 @@
                   <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                   <Component id="PrefixCheckbox" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="CopyXXHDPIChk" min="-2" max="-2" attributes="0"/>
+                  <Component id="CopyOriginChk" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="PrefixText" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
@@ -300,9 +300,9 @@
         </Component>
         <Component class="javax.swing.JCheckBox" name="PrefixCheckbox">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Change default prefix?"/>
             <Property name="toolTipText" type="java.lang.String" value="This will determine what folders the downscaled images will create or be moved into. (Default is drawable-)"/>
             <Property name="actionCommand" type="java.lang.String" value="PrefixCheck"/>
+            <Property name="label" type="java.lang.String" value="Override default prefix?"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PrefixCheckboxActionPerformed"/>
@@ -311,15 +311,15 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="CopyXXHDPIChk">
+        <Component class="javax.swing.JCheckBox" name="CopyOriginChk">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Copy XXHDPI with prefix?"/>
             <Property name="toolTipText" type="java.lang.String" value="Select this to copy the source folder with the custom prefix"/>
             <Property name="actionCommand" type="java.lang.String" value="PrefixCheck"/>
             <Property name="enabled" type="boolean" value="false"/>
+            <Property name="label" type="java.lang.String" value="Copy origin with prefix?"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CopyXXHDPIChkActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CopyOriginChkActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
