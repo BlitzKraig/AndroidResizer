@@ -43,7 +43,7 @@ public class AResizerFrame extends javax.swing.JFrame {
     private File[] fileList;
     private File[] imageList;
     private String ext;
-    private final String version = "1.2.2";
+    private final String version = "1.3";
 
     /**
      * Creates new form NewJFrame
