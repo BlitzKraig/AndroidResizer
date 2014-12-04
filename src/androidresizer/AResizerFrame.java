@@ -916,6 +916,8 @@ public class AResizerFrame extends javax.swing.JFrame {
         }
 
         OutputTxtArea.append("Re-sizing complete.");
+        
+        Toolkit.getDefaultToolkit().beep();
 
         GenerateButton.setEnabled(true);
         chkHDPI.setEnabled(true);
