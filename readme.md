@@ -87,7 +87,8 @@ You should find v1.3 in the releases tab, ready to go.
 - SVG support
 - Seperate source/destination folders
 - Multiple project configurations
-- XXXHDPI support- 9-patch support
+- XXXHDPI support
+- 9-patch support
 - Generation Wizard
 - Build-step integration
 
