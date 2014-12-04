@@ -24,40 +24,22 @@ _NOTE: You may want to back up your assets before running this tool. In the unli
 
 ####Changelog:-
 
-#####1.0
-- Initial Release
-- Scale all PNG images in an XXHDPI folder and save them to all lower DPI's (L, M, TV, H, XH)
+#####1.3
+Been a bit lazy recently with this, but the project is progressing!
+You should find v1.3 in the releases tab, ready to go.
 
+- Added directory serialization (The program now remembers your last used input directory)
+- Added input density choice via combobox
+- Fixed TVDPI scaling (checkbox is still unselected by default, as TVDPI is rarely used)
+- Fixed rare "Directory is null!" bug
+- "Copy XXHDPI with prefix" is now "Copy origin prefix", and works with all densities.
+- Added notification beep on resizing completion
+- Minor misc. bugs
 
-
-#####1.0.1
-- Added multi-threading to provide user feedback while processing images
-- Added ability to choose which DPI outputs to generate
-- Fixed transparency issues
-
-
-
-#####1.1
-- Added JPEG and GIF support (Animation not currently supported)
-- Improved scaling operations
-
-
-
-#####1.1.1
-- Stability improvements
-- Output improvements
-- Fixed progress bar bug
-
-
-
-#####1.2
-- Added custom prefix for use with non-standard Android Resource structures (Titanium, PhoneGap etc.)
-- Added some tooltips
-- Altered some text output to fit with the new prefixing feature
-- Added XXHDPI Copy
-- Cleaned up variable names
-- Disable/enable all controls when sizing is in progress/complete
-
+#####1.2.2
+- Fixed XXHDPI copying scaling down to ldpi
+- Fixed some output
+- Fixed scaling issue for images with no alpha channel 
 
 #####1.2.1
 - Added EXE generation
@@ -68,23 +50,44 @@ _NOTE: You may want to back up your assets before running this tool. In the unli
 - Disable/enable directory field when sizing is in progress/complete
 - Removed some unused files/code
 
-#####1.2.2
-- Fixed XXHDPI copying scaling down to ldpi
-- Fixed some output
-- Fixed scaling issue for images with no alpha channel 
+#####1.2
+- Added custom prefix for use with non-standard Android Resource structures (Titanium, PhoneGap etc.)
+- Added some tooltips
+- Altered some text output to fit with the new prefixing feature
+- Added XXHDPI Copy
+- Cleaned up variable names
+- Disable/enable all controls when sizing is in progress/complete
+
+#####1.1.1
+- Stability improvements
+- Output improvements
+- Fixed progress bar bug
+
+#####1.1
+- Added JPEG and GIF support (Animation not currently supported)
+- Improved scaling operations
+
+#####1.0.1
+- Added multi-threading to provide user feedback while processing images
+- Added ability to choose which DPI outputs to generate
+- Fixed transparency issues
+
+#####1.0
+- Initial Release
+- Scale all PNG images in an XXHDPI folder and save them to all lower DPI's (L, M, TV, H, XH)
+
+
 
 ######PLANNED FEATURES
 - iOS support
 - Single file support
-- Scale from other densities
+- ~~Scale from other densities~~
 - Basic upscaling
 - Updated design
 - SVG support
 - Seperate source/destination folders
 - Multiple project configurations
-- XXXHDPI support
-- Scale from other densities
-- 9-patch support
+- XXXHDPI support- 9-patch support
 - Generation Wizard
 - Build-step integration
 
