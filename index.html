@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Androidresizer by BlitzKraig</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Androidresizer</h1>
+          <h2>Java Desktop app to resize XXHDPI images and sort them into folders automatically.</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/BlitzKraig/AndroidResizer/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/BlitzKraig/AndroidResizer/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/BlitzKraig/AndroidResizer" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h1>
+<a id="android-resizer--readme" class="anchor" href="#android-resizer--readme" aria-hidden="true"><span class="octicon octicon-link"></span></a>Android Resizer – ReadMe</h1>
+
+<p><img src="https://raw.githubusercontent.com/BlitzKraig/AndroidResizer/master/src/androidresizer/ResizerIconBlue.gif" alt="alt tag"></p>
+
+<p>Created by <a href="https://github.com/BlitzKraig">Craig Currie</a></p>
+
+<p>Artwork by <a href="https://github.com/janputzan">Jan Putzan</a></p>
+
+<h2>
+<a id="what-is-androidresizer" class="anchor" href="#what-is-androidresizer" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is AndroidResizer?</h2>
+
+<p>AndroidResizer is a simple Java desktop app for automatically re-sizing android assets.</p>
+
+<p>AR will downscale your assets and copy them into an android-style folder structure.</p>
+
+<p><img src="https://raw.githubusercontent.com/BlitzKraig/AndroidResizer/master/src/androidresizer/AResizerScreenShot.png" alt="alt tag"></p>
+
+<h2>
+<a id="why-is-androidresizer" class="anchor" href="#why-is-androidresizer" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why is AndroidResizer?</h2>
+
+<p>AR was a personal project to help speed up some of the tedious tasks when dealing with Android assets. With AR, you can scale down from XXHDPI, which can be useful in a few ways. When creating new assets the benefits are obvious, simply create your XXHDPI assets and scale them down straight into your project.</p>
+
+<p>It can also be useful when adding new assets into a project. Instead of getting the new assets for each density and dragging them into each DPI folder, simply drag your XXHDPI asset into it’s folder then run AndroidResizer again to re-scale the folder down.</p>
+
+<p><em>NOTE: You may want to back up your assets before running this tool. In the unlikely event that all of your assets get rekt, I will not be held responsible.</em></p>
+
+<h4>
+<a id="changelog-" class="anchor" href="#changelog-" aria-hidden="true"><span class="octicon octicon-link"></span></a>Changelog:-</h4>
+
+<h5>
+<a id="13" class="anchor" href="#13" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.3</h5>
+
+<p>Been a bit lazy recently with this, but the project is progressing!
+You should find v1.3 in the releases tab, ready to go.</p>
+
+<ul>
+<li>Added directory serialization (The program now remembers your last used input directory)</li>
+<li>Added input density choice via combobox</li>
+<li>Fixed TVDPI scaling (checkbox is still unselected by default, as TVDPI is rarely used)</li>
+<li>Fixed rare "Directory is null!" bug</li>
+<li>"Copy XXHDPI with prefix" is now "Copy origin prefix", and works with all densities.</li>
+<li>Added notification beep on resizing completion</li>
+<li>Minor misc. bugs</li>
+</ul>
+
+<h5>
+<a id="122" class="anchor" href="#122" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.2.2</h5>
+
+<ul>
+<li>Fixed XXHDPI copying scaling down to ldpi</li>
+<li>Fixed some output</li>
+<li>Fixed scaling issue for images with no alpha channel </li>
+</ul>
+
+<h5>
+<a id="121" class="anchor" href="#121" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.2.1</h5>
+
+<ul>
+<li>Added EXE generation</li>
+<li>Added new icons &amp; images</li>
+<li>Updated DMG generation</li>
+<li>Changed to Nimbus L&amp;F</li>
+<li>Made directory field manually editable</li>
+<li>Disable/enable directory field when sizing is in progress/complete</li>
+<li>Removed some unused files/code</li>
+</ul>
+
+<h5>
+<a id="12" class="anchor" href="#12" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.2</h5>
+
+<ul>
+<li>Added custom prefix for use with non-standard Android Resource structures (Titanium, PhoneGap etc.)</li>
+<li>Added some tooltips</li>
+<li>Altered some text output to fit with the new prefixing feature</li>
+<li>Added XXHDPI Copy</li>
+<li>Cleaned up variable names</li>
+<li>Disable/enable all controls when sizing is in progress/complete</li>
+</ul>
+
+<h5>
+<a id="111" class="anchor" href="#111" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.1.1</h5>
+
+<ul>
+<li>Stability improvements</li>
+<li>Output improvements</li>
+<li>Fixed progress bar bug</li>
+</ul>
+
+<h5>
+<a id="11" class="anchor" href="#11" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.1</h5>
+
+<ul>
+<li>Added JPEG and GIF support (Animation not currently supported)</li>
+<li>Improved scaling operations</li>
+</ul>
+
+<h5>
+<a id="101" class="anchor" href="#101" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.0.1</h5>
+
+<ul>
+<li>Added multi-threading to provide user feedback while processing images</li>
+<li>Added ability to choose which DPI outputs to generate</li>
+<li>Fixed transparency issues</li>
+</ul>
+
+<h5>
+<a id="10" class="anchor" href="#10" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.0</h5>
+
+<ul>
+<li>Initial Release</li>
+<li>Scale all PNG images in an XXHDPI folder and save them to all lower DPI's (L, M, TV, H, XH)</li>
+</ul>
+
+<h6>
+<a id="planned-features" class="anchor" href="#planned-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>PLANNED FEATURES</h6>
+
+<ul>
+<li>iOS support</li>
+<li>Single file support</li>
+<li><del>Scale from other densities</del></li>
+<li>Basic upscaling</li>
+<li>Updated design</li>
+<li>SVG support</li>
+<li>Seperate source/destination folders</li>
+<li>Multiple project configurations</li>
+<li>XXXHDPI support</li>
+<li>9-patch support</li>
+<li>Generation Wizard</li>
+<li>Build-step integration</li>
+</ul>
+
+<h2>
+<a id="reference" class="anchor" href="#reference" aria-hidden="true"><span class="octicon octicon-link"></span></a>REFERENCE</h2>
+
+<p>From <a href="http://stackoverflow.com/questions/11581649/about-android-image-size-and-assets-sizes">a great StackOverflow post about android densities</a></p>
+
+<p>mdpi is the reference density -- that is, 1 px on an mdpi display is equal to 1 dip. The ratio for asset scaling is:</p>
+
+<table>
+<thead>
+<tr>
+<th>ldpi</th>
+<th>mdpi</th>
+<th>tvdpi</th>
+<th>hdpi</th>
+<th>xhdpi</th>
+<th>xxhdpi</th>
+<th>xxxhdpi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.75</td>
+<td>1</td>
+<td>1.33</td>
+<td>1.5</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+
+<p>Although you don't really need to worry about tvdpi unless you're developing specifically for Google TV or the original Nexus 7 -- but even Google recommends simply using hdpi assets.</p>
+
+<p>What this means is if you're doing a 48dip image and plan to support up to xhdpi resolution, you should start with a 96px image (144px if you want native assets for xxhdpi) and make the following images for the densities:</p>
+
+<table>
+<thead>
+<tr>
+<th>ldpi</th>
+<th>mdpi</th>
+<th>tvdpi</th>
+<th>hdpi</th>
+<th>xhdpi</th>
+<th>xxhdpi</th>
+<th>xxxhdpi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>36 x 36</td>
+<td>48 x 48</td>
+<td>64 x 64</td>
+<td>72 x 72</td>
+<td>96 x 96</td>
+<td>144 x 144</td>
+<td>192 x 192</td>
+</tr>
+</tbody>
+</table>
+
+<p>And these should display at roughly the same size on any device, provided you've placed these in density-specific folders (e.g. drawable-xhdpi, drawable-hdpi, etc.)    </p>
+
+<p>For reference, the pixel densities for these are:</p>
+
+<table>
+<thead>
+<tr>
+<th>ldpi</th>
+<th>mdpi</th>
+<th>tvdpi</th>
+<th>hdpi</th>
+<th>xhdpi</th>
+<th>xxhdpi</th>
+<th>xxxhdpi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>120</td>
+<td>160</td>
+<td>213</td>
+<td>240</td>
+<td>320</td>
+<td>480</td>
+<td>640</td>
+</tr>
+</tbody>
+</table>
+
+<p><img src="https://raw.githubusercontent.com/BlitzKraig/AndroidResizer/master/src/androidresizer/Resizer.png" alt="alt tag"></p>
+        </section>
+
+        <footer>
+          Androidresizer is maintained by <a href="https://github.com/BlitzKraig">BlitzKraig</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
