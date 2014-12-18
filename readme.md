@@ -92,7 +92,7 @@ You should find v1.3 in the releases tab, ready to go.
 - Generation Wizard
 - Build-step integration
 
-<sup><sup><sup><sup>Android Image Resizing Asset Resizer Density Scale LDPI MDPI HDPI TVDPI XHDPI XXHDPI XXXHDPI DPI  Resource Res</sup></sup></sup></sup>
+<sup><sup><sup><sup><sup><sup><sup><sup>Android Image Resizing Asset Resizer Density Scale LDPI MDPI HDPI TVDPI XHDPI XXHDPI XXXHDPI DPI  Resource Res</sup></sup></sup></sup></sup></sup></sup></sup>
 
 REFERENCE
 ---
