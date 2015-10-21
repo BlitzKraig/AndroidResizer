@@ -24,6 +24,12 @@ _NOTE: You may want to back up your assets before running this tool. In the unli
 
 ####Changelog:-
 
+#####1.4
+Quick release since someone requested this in the project issues:
+- Added XXXHDPI support
+
+I'll try to get another version out soon with some more features, and I've come up with an idea for 9-patch support which I'll be attempting to implement soon! Also hoping to get iOS support in the next release, along with the new GUI.
+
 #####1.3
 Been a bit lazy recently with this, but the project is progressing!
 You should find v1.3 in the releases tab, ready to go.
