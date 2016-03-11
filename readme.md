@@ -16,11 +16,11 @@ AR will downscale your assets and copy them into an android-style folder structu
 
 Why is AndroidResizer?
 ---
-AR was a personal project to help speed up some of the tedious tasks when dealing with Android assets. With AR, you can scale down from XXHDPI, which can be useful in a few ways. When creating new assets the benefits are obvious, simply create your XXHDPI assets and scale them down straight into your project.
+AR was a personal project to help speed up some of the tedious tasks when dealing with Android assets. With AR, you can scale down from XXXHDPI, which can be useful in a few ways. When creating new assets the benefits are obvious, simply create your XXXHDPI assets and scale them down straight into your project.
 
-It can also be useful when adding new assets into a project. Instead of getting the new assets for each density and dragging them into each DPI folder, simply drag your XXHDPI asset into it’s folder then run AndroidResizer again to re-scale the folder down.
+It can also be useful when adding new assets into a project. Instead of getting the new assets for each density and dragging them into each DPI folder, simply drag your XXXHDPI asset into it’s folder then run AndroidResizer again to re-scale the folder down.
 
-_NOTE: You may want to back up your assets before running this tool. In the unlikely event that all of your assets get rekt, I will not be held responsible._
+_NOTE: You may want to back up your assets before running this tool. In the unlikely event that all of your assets get rekt, I can not be held responsible._
 
 ####Changelog:-
 
