@@ -6,6 +6,8 @@ Created by [Craig Currie](https://github.com/BlitzKraig)
 
 Artwork by [Jan Putzan](https://github.com/janputzan)
 
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-AndroidResizer-green.svg?style=true)](https://android-arsenal.com/details/1/3274)
+
 What is AndroidResizer?
 ---
 AndroidResizer is a simple Java desktop app for automatically re-sizing android assets.
