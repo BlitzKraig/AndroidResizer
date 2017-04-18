@@ -24,15 +24,15 @@ It can also be useful when adding new assets into a project. Instead of getting 
 
 _NOTE: You may want to back up your assets before running this tool. In the unlikely event that all of your assets get rekt, I can not be held responsible._
 
-####Changelog:-
+#### Changelog:-
 
-#####1.4
+##### 1.4
 Quick release since someone requested this in the project issues:
 - Added XXXHDPI support
 
 I'll try to get another version out soon with some more features, and I've come up with an idea for 9-patch support which I'll be attempting to implement soon! Also hoping to get iOS support in the next release, along with the new GUI.
 
-#####1.3
+##### 1.3
 Been a bit lazy recently with this, but the project is progressing!
 You should find v1.3 in the releases tab, ready to go.
 
@@ -44,12 +44,12 @@ You should find v1.3 in the releases tab, ready to go.
 - Added notification beep on resizing completion
 - Minor misc. bugs
 
-#####1.2.2
+##### 1.2.2
 - Fixed XXHDPI copying scaling down to ldpi
 - Fixed some output
 - Fixed scaling issue for images with no alpha channel 
 
-#####1.2.1
+##### 1.2.1
 - Added EXE generation
 - Added new icons & images
 - Updated DMG generation
@@ -58,7 +58,7 @@ You should find v1.3 in the releases tab, ready to go.
 - Disable/enable directory field when sizing is in progress/complete
 - Removed some unused files/code
 
-#####1.2
+##### 1.2
 - Added custom prefix for use with non-standard Android Resource structures (Titanium, PhoneGap etc.)
 - Added some tooltips
 - Altered some text output to fit with the new prefixing feature
@@ -66,27 +66,27 @@ You should find v1.3 in the releases tab, ready to go.
 - Cleaned up variable names
 - Disable/enable all controls when sizing is in progress/complete
 
-#####1.1.1
+##### 1.1.1
 - Stability improvements
 - Output improvements
 - Fixed progress bar bug
 
-#####1.1
+##### 1.1
 - Added JPEG and GIF support (Animation not currently supported)
 - Improved scaling operations
 
-#####1.0.1
+##### 1.0.1
 - Added multi-threading to provide user feedback while processing images
 - Added ability to choose which DPI outputs to generate
 - Fixed transparency issues
 
-#####1.0
+##### 1.0
 - Initial Release
 - Scale all PNG images in an XXHDPI folder and save them to all lower DPI's (L, M, TV, H, XH)
 
 
 
-######PLANNED FEATURES
+###### PLANNED FEATURES
 - iOS support
 - Single file support
 - ~~Scale from other densities~~
