@@ -1,12 +1,18 @@
 Android Resizer – ReadMe
 ===
+
+This project is being restructured.
+--
+The next iteration will be a [node module](https://github.com/BlitzKraig/AndroidResizer-Node) which can be used as a standalone CLI tool or as a dependency for another node project, followed by an [electron frontend](https://github.com/BlitzKraig/Mallard). This project is unlikely to receive any further updates.
+
+
 ![alt tag](https://raw.githubusercontent.com/BlitzKraig/AndroidResizer/master/src/androidresizer/ResizerIconBlue.gif)
 
 Created by [Craig Currie](https://github.com/BlitzKraig)
 
 Artwork by [Jan Putzan](https://github.com/janputzan)
 
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-AndroidResizer-green.svg?style=true)](https://android-arsenal.com/details/1/3274)
+![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Android%20Resizer-green.svg?style=flat)
 
 What is AndroidResizer?
 ---
